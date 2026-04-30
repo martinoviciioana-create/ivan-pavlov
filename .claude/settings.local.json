@@ -13,7 +13,21 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1200px-Colosseo_2020.jpg\")",
       "Bash(curl -s -o /dev/null -w \"spanish: %{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Piazza_di_Spagna%2C_Rome_%2850503315896%29.jpg/500px-Piazza_di_Spagna%2C_Rome_%2850503315896%29.jpg\")",
       "Bash(curl -s -o /dev/null -w \"navona: %{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Piazza_Navona_1.jpg/500px-Piazza_Navona_1.jpg\")",
-      "Bash(curl -s -o /dev/null -w \"castel: %{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Castel_Sant%27Angelo_at_Night.jpg/500px-Castel_Sant%27Angelo_at_Night.jpg\")"
+      "Bash(curl -s -o /dev/null -w \"castel: %{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Castel_Sant%27Angelo_at_Night.jpg/500px-Castel_Sant%27Angelo_at_Night.jpg\")",
+      "Bash(pandoc --version)",
+      "Read(//Applications/Google Chrome.app/Contents/MacOS/**)",
+      "Read(//Applications/Microsoft Edge.app/Contents/MacOS/**)",
+      "Bash(python3 -c \"import markdown\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=documentatie.pdf \"file://$\\(pwd\\)/documentatie.html\")",
+      "Bash(open \"/Users/lazarcatalin/Desktop/Projects/Personal/untitled folder/prezentare-roma/documentatie.pdf\")",
+      "Bash(open documentatie.pdf)",
+      "Bash(sips -s format png documentatie.pdf --out /tmp/coperta_check.png)",
+      "Bash(sips -s format png --pageNumber 2 documentatie.pdf --out /tmp/pag2_check.png)",
+      "Bash(brew list *)",
+      "Bash(brew install *)",
+      "Bash(pdftoppm -r 80 -f 1 -l 2 documentatie.pdf /tmp/check)",
+      "Bash(pdftoppm -r 80 -png -f 1 -l 2 documentatie.pdf /tmp/check)",
+      "Bash(pdftoppm -r 70 -png -f 5 -l 5 documentatie.pdf /tmp/check5)"
     ]
   }
 }

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<!-- Versiune HTML a documentatiei, formatata pentru printare ca PDF -->
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Lucrare de Atestat - Prezentare Roma</title>
+    <style>
+        /* Setari pentru pagina la printare */
+        @page {
+            size: A4;
+            margin: 2.5cm 2cm;
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #000;
+            text-align: justify;
+        }
+
+        /* Pagina de titlu - respecta sablonul oficial al liceului */
+        /* Inaltimea trebuie sa fie sub 24.7cm (A4 minus marginile sus/jos) */
+        .coperta {
+            page-break-after: always;
+            height: 24cm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Liceul - sus, centrat */
+        .coperta .liceu {
+            text-align: center;
+            font-size: 14pt;
+        }
+
+        /* "Proiect pentru obtinerea atestatului..." - centrat, mai mare */
+        .coperta .subtitlu {
+            text-align: center;
+            font-size: 18pt;
+            margin-top: 5cm;
+        }
+
+        /* Titlul proiectului - mare si bold */
+        .coperta .titlu-proiect {
+            text-align: center;
+            font-size: 28pt;
+            font-weight: bold;
+            margin-top: 1.5cm;
+            text-transform: uppercase;
+        }
+
+        /* Zona de jos cu profesor (stanga) si elev (dreapta) */
+        /* margin-top: auto impinge zona spre baza paginii */
+        .coperta .info-jos {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12pt;
+            margin-bottom: 1cm;
+        }
+
+        .coperta .profesor {
+            text-align: left;
+        }
+
+        .coperta .elev {
+            text-align: left;
+        }
+
+        /* Anul scolar - centrat, jos de tot */
+        .coperta .an {
+            text-align: center;
+            font-size: 12pt;
+        }
+
+        /* Cuprins */
+        .cuprins {
+            page-break-after: always;
+        }
+
+        .cuprins h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cuprins ol {
+            font-size: 13pt;
+            line-height: 2;
+            list-style-type: decimal;
+            margin-left: 30px;
+        }
+
+        .cuprins ol ol {
+            list-style-type: lower-alpha;
+            font-size: 12pt;
+        }
+
+        /* Capitole */
+        h1 {
+            font-size: 18pt;
+            color: #8b0000;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            page-break-before: always;
+        }
+
+        h2 {
+            font-size: 16pt;
+            color: #8b0000;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 13pt;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-indent: 1.5em;
+        }
+
+        /* Blocuri de cod */
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-family: "Courier New", monospace;
+            font-size: 10pt;
+            white-space: pre-wrap;
+            page-break-inside: avoid;
+            margin: 10px 0;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 1px 4px;
+            font-family: "Courier New", monospace;
+            font-size: 10pt;
+        }
+
+        /* Liste */
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 12px;
+        }
+
+        ul li, ol li {
+            margin-bottom: 6px;
+        }
+
+        /* Tabel */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+
+        table th, table td {
+            border: 1px solid #555;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #8b0000;
+            color: white;
+        }
+
+        /* Subliniem caracterul deosebit al primei pagini de titlu */
+        hr {
+            border: none;
+            border-top: 1px solid #8b0000;
+            margin: 30px 0;
+        }
+
+        /* Cand printam, nu vrem sectiuni rupte aiurea */
+        .capitol {
+            page-break-before: always;
+        }
+
+        .capitol:first-of-type {
+            page-break-before: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- COPERTA / PAGINA DE TITLU - urmeaza sablonul oficial al liceului -->
+    <div class="coperta">
+
+        <!-- Numele liceului - sus -->
+        <div class="liceu">
+            Colegiul Național "Spiru Haret" București
+        </div>
+
+        <!-- Subtitlu cu tipul lucrarii -->
+        <div class="subtitlu">
+            Proiect pentru obținerea atestatului profesional<br>
+            la disciplina informatică
+        </div>
+
+        <!-- Titlul proiectului - mare, in centru -->
+        <div class="titlu-proiect">
+            ROMA
+        </div>
+
+        <!-- Profesor (stanga) si elev (dreapta) - jos -->
+        <div class="info-jos">
+            <div class="profesor">
+                Profesor coordonator:<br>
+                Soare Daniela
+            </div>
+            <div class="elev">
+                Elev:<br>
+                Martinovici Ioana Alexandra<br>
+                Clasa: a XII-a B
+            </div>
+        </div>
+
+        <!-- Anul scolar - in centru, jos de tot -->
+        <div class="an">
+            An școlar: 2025-2026
+        </div>
+    </div>
+
+    <!-- CUPRINS -->
+    <div class="cuprins">
+        <h2>Cuprins</h2>
+        <ol>
+            <li>Argument</li>
+            <li>Descrierea proiectului</li>
+            <li>Tehnologii folosite
+                <ol>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                </ol>
+            </li>
+            <li>Structura aplicației
+                <ol>
+                    <li>Organizarea fișierelor</li>
+                    <li>Pagina principală (index.html)</li>
+                    <li>Pagina de atracții (atractii.html)</li>
+                    <li>Fișierul de stil (stil.css)</li>
+                </ol>
+            </li>
+            <li>Detalii de implementare
+                <ol>
+                    <li>Structura HTML</li>
+                    <li>Stilizare CSS</li>
+                    <li>Design responsive</li>
+                    <li>Galeria de imagini</li>
+                </ol>
+            </li>
+            <li>Mod de utilizare</li>
+            <li>Concluzii</li>
+            <li>Bibliografie</li>
+        </ol>
+    </div>
+
+    <!-- CAPITOLUL 1: ARGUMENT -->
+    <div class="capitol">
+        <h1>1. Argument</h1>
+        <p>
+            Am ales ca temă pentru lucrarea de atestat realizarea unei pagini web
+            de prezentare a orașului Roma, capitala Italiei. Am ales acest subiect
+            deoarece Roma este unul dintre cele mai importante orașe din istoria
+            omenirii și are o legătură strânsă cu cultura românească — chiar și
+            numele "România" provine de la cuvântul "roman".
+        </p>
+        <p>
+            Realizarea unui site web mi-a permis să aplic cunoștințele de
+            informatică acumulate în timpul liceului, în special cele legate
+            de limbajele HTML și CSS, dar și să îmi dezvolt creativitatea prin
+            alegerea culorilor, a imaginilor și a modului de organizare a
+            informației.
+        </p>
+        <p>
+            Proiectul îmbină astfel <strong>tehnologia</strong> cu <strong>istoria</strong>
+            și <strong>cultura</strong>, fiind util atât din punct de vedere
+            educațional, cât și informativ pentru orice persoană care dorește
+            să afle mai multe despre Orașul Etern.
+        </p>
+    </div>
+
+    <!-- CAPITOLUL 2: DESCRIEREA PROIECTULUI -->
+    <div class="capitol">
+        <h1>2. Descrierea proiectului</h1>
+        <p>
+            Proiectul constă într-un site web format din <strong>două pagini HTML</strong>,
+            conectate între ele printr-un meniu de navigare. Site-ul prezintă
+            orașul Roma sub diferite aspecte:
+        </p>
+        <ul>
+            <li><strong>Pagina principală</strong> conține informații generale
+            despre oraș, istoria Romei împărțită pe perioade, geografia și clima,
+            precum și un tabel cu date utile.</li>
+            <li><strong>Pagina de atracții</strong> prezintă cele mai cunoscute
+            monumente ale Romei, o galerie foto, bucătăria tradițională romană
+            și diverse curiozități.</li>
+        </ul>
+        <p>
+            Site-ul este realizat <strong>integral în limba română</strong> și
+            folosește un design inspirat din culorile clasice ale Romei antice
+            (roșu închis și auriu), cu o tipografie serif (Georgia) care amintește
+            de inscripțiile romane.
+        </p>
+    </div>
+
+    <!-- CAPITOLUL 3: TEHNOLOGII FOLOSITE -->
+    <div class="capitol">
+        <h1>3. Tehnologii folosite</h1>
+
+        <h2>3.1. HTML (HyperText Markup Language)</h2>
+        <p>
+            HTML este limbajul standard folosit pentru crearea paginilor web.
+            El definește <strong>structura</strong> unei pagini, prin elemente
+            numite <em>tag-uri</em> (de exemplu: <code>&lt;h1&gt;</code>,
+            <code>&lt;p&gt;</code>, <code>&lt;img&gt;</code>).
+        </p>
+        <p>
+            Fiecare pagină a site-ului este un fișier <code>.html</code> care conține:
+        </p>
+        <ul>
+            <li>antetul <code>&lt;head&gt;</code> cu informații despre pagină
+            (titlu, codificare)</li>
+            <li>corpul <code>&lt;body&gt;</code> cu conținutul vizibil de utilizator</li>
+        </ul>
+        <p>
+            În proiectul meu am folosit <strong>HTML5</strong>, varianta modernă
+            a limbajului, care introduce elemente semantice utile precum
+            <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+            <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code> și
+            <code>&lt;footer&gt;</code>.
+        </p>
+
+        <h2>3.2. CSS (Cascading Style Sheets)</h2>
+        <p>
+            CSS este limbajul folosit pentru a <strong>stiliza</strong> o pagină
+            web — culori, fonturi, dimensiuni, poziționare etc. Practic, dacă
+            HTML stabilește <em>ce</em> afișăm, CSS stabilește <em>cum arată</em>
+            ceea ce afișăm.
+        </p>
+        <p>
+            Am folosit un fișier CSS extern (<code>stil.css</code>) care este
+            aplicat ambelor pagini. Avantajul acestei metode este că, dacă vreau
+            să schimb un stil (de exemplu culoarea meniului), îl modific într-un
+            singur loc și schimbarea apare automat pe toate paginile.
+        </p>
+        <p>În stilizarea proiectului am folosit:</p>
+        <ul>
+            <li><strong>CSS Grid</strong> — pentru afișarea galeriei de imagini</li>
+            <li><strong>Flexbox</strong> și <strong>box model</strong> — pentru
+            aranjarea elementelor</li>
+            <li><strong>Media queries</strong> — pentru ca site-ul să arate bine
+            și pe telefoane</li>
+            <li><strong>Pseudo-clase</strong> (<code>:hover</code>) — pentru
+            efecte la trecerea mouse-ului</li>
+            <li><strong>Tranziții</strong> — pentru animații line</li>
+        </ul>
+    </div>
+
+    <!-- CAPITOLUL 4: STRUCTURA APLICATIEI -->
+    <div class="capitol">
+        <h1>4. Structura aplicației</h1>
+
+        <h2>4.1. Organizarea fișierelor</h2>
+        <p>Proiectul este compus din <strong>3 fișiere</strong> plasate în același folder:</p>
+        <pre>prezentare-roma/
+├── index.html       (pagina principală)
+├── atractii.html    (pagina de atracții și cultură)
+└── stil.css         (fișierul cu stiluri, comun ambelor pagini)</pre>
+
+        <h2>4.2. Pagina principală (index.html)</h2>
+        <p>Pagina de start a site-ului conține următoarele secțiuni:</p>
+        <ol>
+            <li><strong>Antet</strong> — un banner mare cu o imagine de fundal
+            cu Colosseum-ul, peste care apare titlul "Roma — Orașul Etern".</li>
+            <li><strong>Meniu de navigare</strong> — două butoane pentru a
+            comuta între cele două pagini ale site-ului.</li>
+            <li><strong>Despre Roma</strong> — informații generale: poziție
+            geografică, populație, supranume.</li>
+            <li><strong>Istoria Romei</strong> — prezentată cronologic în 5 perioade:
+                <ul>
+                    <li>Fondarea (753 î.Hr.)</li>
+                    <li>Republica Romană</li>
+                    <li>Imperiul Roman</li>
+                    <li>Roma papală</li>
+                    <li>Roma modernă</li>
+                </ul>
+            </li>
+            <li><strong>Geografie și climă</strong> — cele 7 coline, râul Tibru,
+            clima mediteraneană.</li>
+            <li><strong>Tabel cu informații rapide</strong> — date utile
+            (populație, suprafață, limbă, monedă etc.).</li>
+            <li><strong>Subsol</strong> — informații despre proiect și surse.</li>
+        </ol>
+
+        <h2>4.3. Pagina de atracții (atractii.html)</h2>
+        <p>A doua pagină a site-ului are următoarele secțiuni:</p>
+        <ol>
+            <li><strong>Antet</strong> — banner cu o imagine de fundal cu
+            Fontana di Trevi.</li>
+            <li><strong>Meniu de navigare</strong> — identic cu prima pagină.</li>
+            <li><strong>Atracții turistice</strong> — descrieri detaliate pentru
+            9 monumente: Colosseum, Forul Roman, Vaticanul, Capela Sixtină,
+            Fontana di Trevi, Panteonul, Piazza Navona, Treptele Spaniole,
+            Castel Sant'Angelo.</li>
+            <li><strong>Galerie foto</strong> — 8 imagini ale celor mai
+            importante monumente, cu un efect de mărire la trecerea mouse-ului.</li>
+            <li><strong>Bucătărie romană</strong> — împărțită pe categorii:
+            paste, preparate tradiționale, deserturi.</li>
+            <li><strong>Curiozități</strong> — 7 fapte interesante, prezentate
+            în cutii evidențiate.</li>
+            <li><strong>Subsol</strong> — identic cu prima pagină.</li>
+        </ol>
+
+        <h2>4.4. Fișierul de stil (stil.css)</h2>
+        <p>
+            Acest fișier conține toate regulile de stilizare aplicate ambelor
+            pagini. Principalele reguli definite sunt:
+        </p>
+        <ul>
+            <li>stiluri generale pentru <code>body</code>, <code>header</code>,
+            <code>nav</code>, <code>main</code>, <code>footer</code></li>
+            <li>stiluri pentru secțiuni și titluri</li>
+            <li>stiluri pentru galeria de imagini (grid + efect hover)</li>
+            <li>stiluri pentru tabel</li>
+            <li>stiluri pentru cutia de curiozități</li>
+            <li>reguli responsive pentru ecrane mici</li>
+        </ul>
+    </div>
+
+    <!-- CAPITOLUL 5: DETALII DE IMPLEMENTARE -->
+    <div class="capitol">
+        <h1>5. Detalii de implementare</h1>
+
+        <h2>5.1. Structura HTML</h2>
+        <p>Fiecare pagină HTML respectă structura standard:</p>
+        <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="ro"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Roma - Orașul Etern&lt;/title&gt;
+    &lt;link rel="stylesheet" href="stil.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+    &lt;main&gt;
+        &lt;section&gt;...&lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        <p>
+            Atributul <code>lang="ro"</code> indică faptul că pagina este în
+            limba română, iar <code>&lt;meta charset="UTF-8"&gt;</code> permite
+            afișarea corectă a diacriticelor (ă, â, î, ș, ț).
+        </p>
+
+        <h2>5.2. Stilizare CSS</h2>
+        <p>
+            Pentru a obține un aspect plăcut, am folosit o paletă de culori
+            inspirată din Roma antică:
+        </p>
+        <table>
+            <tr>
+                <th>Culoare</th>
+                <th>Cod hex</th>
+                <th>Utilizare</th>
+            </tr>
+            <tr>
+                <td>Roșu închis</td>
+                <td>#8b0000</td>
+                <td>meniul, titlurile, subsol</td>
+            </tr>
+            <tr>
+                <td>Auriu</td>
+                <td>#ffd700</td>
+                <td>accente, link-uri active</td>
+            </tr>
+            <tr>
+                <td>Crem</td>
+                <td>#f9f5ec</td>
+                <td>fundalul paginii</td>
+            </tr>
+            <tr>
+                <td>Galben pal</td>
+                <td>#fff8dc</td>
+                <td>cutiile de curiozități</td>
+            </tr>
+        </table>
+        <p>
+            Am folosit fontul <strong>Georgia</strong> (sau "Times New Roman"
+            ca alternativă), un font cu serife care amintește de inscripțiile
+            romane antice.
+        </p>
+
+        <h2>5.3. Design responsive</h2>
+        <p>
+            Pentru ca site-ul să arate bine atât pe calculator, cât și pe
+            telefon, am folosit <em>media queries</em>:
+        </p>
+        <pre>@media (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+    }
+    nav a {
+        display: block;
+        margin: 5px 0;
+    }
+}</pre>
+        <p>
+            Pe telefoane, link-urile din meniu sunt așezate unul sub altul,
+            iar titlul antetului devine mai mic, pentru a încăpea bine pe ecran.
+        </p>
+
+        <h2>5.4. Galeria de imagini</h2>
+        <p>
+            Galeria foto folosește <strong>CSS Grid</strong>, care aranjează
+            automat imaginile într-un număr potrivit de coloane, în funcție
+            de lățimea ecranului:
+        </p>
+        <pre>.galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}</pre>
+        <p>
+            Funcția <code>repeat(auto-fit, minmax(250px, 1fr))</code> înseamnă:
+            "umple linia cu cât mai multe coloane care au cel puțin 250px lățime".
+            Astfel, pe un ecran lat vom vedea 4 imagini pe rând, iar pe telefon
+            doar una sau două.
+        </p>
+        <p>Imaginile au și un efect de mărire la <em>hover</em>:</p>
+        <pre>.galerie img:hover {
+    transform: scale(1.05);
+}</pre>
+        <p>
+            Imaginile folosite sunt preluate de pe <strong>Wikimedia Commons</strong>,
+            sursă liberă de imagini cu licență Creative Commons.
+        </p>
+    </div>
+
+    <!-- CAPITOLUL 6: MOD DE UTILIZARE -->
+    <div class="capitol">
+        <h1>6. Mod de utilizare</h1>
+        <p>
+            Pentru a rula proiectul nu este nevoie de niciun program special —
+            doar de un browser web (Google Chrome, Firefox, Safari, Edge etc.).
+        </p>
+        <p>Pașii de utilizare:</p>
+        <ol>
+            <li>Se deschide folderul <code>prezentare-roma</code>.</li>
+            <li>Se face dublu-click pe fișierul <code>index.html</code>.</li>
+            <li>Pagina se va deschide automat în browserul implicit.</li>
+            <li>Se folosește meniul de sus pentru a naviga între cele două pagini.</li>
+        </ol>
+        <p>
+            Fiind realizat doar cu HTML și CSS, site-ul <strong>nu necesită
+            conexiune la internet</strong>, cu excepția afișării imaginilor
+            (care sunt încărcate de pe Wikimedia Commons).
+        </p>
+    </div>
+
+    <!-- CAPITOLUL 7: CONCLUZII -->
+    <div class="capitol">
+        <h1>7. Concluzii</h1>
+        <p>
+            Realizarea acestui proiect a fost o experiență utilă din mai multe
+            puncte de vedere:
+        </p>
+        <ul>
+            <li>Mi-a permis să aplic în practică cunoștințele de
+            <strong>HTML</strong> și <strong>CSS</strong> acumulate în orele
+            de informatică.</li>
+            <li>Am învățat să organizez informația într-un mod clar, atât pentru
+            utilizator (prin secțiuni și meniu), cât și pentru programator
+            (prin separarea HTML-ului de CSS).</li>
+            <li>Am descoperit conceptul de <strong>design responsive</strong>,
+            foarte important în prezent, când majoritatea oamenilor folosesc
+            telefonul pentru a accesa internetul.</li>
+            <li>Am exersat scrierea unui cod <strong>curat și comentat</strong>,
+            care poate fi înțeles ușor și de o altă persoană.</li>
+        </ul>
+        <p>Pe viitor, proiectul ar putea fi îmbunătățit prin:</p>
+        <ul>
+            <li>adăugarea unei pagini de <strong>contact</strong> sau a
+            <strong>hărții</strong> orașului;</li>
+            <li>folosirea <strong>JavaScript</strong> pentru a adăuga
+            interactivitate (de exemplu, un slider de imagini sau un quiz
+            despre Roma);</li>
+            <li>traducerea site-ului și în alte limbi (engleză, italiană).</li>
+        </ul>
+    </div>
+
+    <!-- CAPITOLUL 8: BIBLIOGRAFIE -->
+    <div class="capitol">
+        <h1>8. Bibliografie</h1>
+        <ol>
+            <li><strong>Wikipedia</strong> — articolul despre Roma:<br>
+            https://ro.wikipedia.org/wiki/Roma</li>
+            <li><strong>Wikipedia</strong> — articolul în limba engleză despre Rome:<br>
+            https://en.wikipedia.org/wiki/Rome</li>
+            <li><strong>Wikimedia Commons</strong> — sursa imaginilor folosite:<br>
+            https://commons.wikimedia.org/wiki/Rome</li>
+            <li><strong>MDN Web Docs</strong> — documentația oficială pentru HTML și CSS:<br>
+            https://developer.mozilla.org/</li>
+            <li><strong>W3Schools</strong> — tutoriale HTML și CSS:<br>
+            https://www.w3schools.com/</li>
+            <li>Manualul de Informatică pentru clasa a XII-a.</li>
+        </ol>
+    </div>
+
+</body>
+</html>

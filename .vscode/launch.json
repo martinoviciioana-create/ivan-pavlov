@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Open index.html in Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5500/index.html",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Serve site"
+    },
+    {
+      "name": "Open atractii.html in Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5500/atractii.html",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Serve site"
+    }
+  ]
+}
