@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/500px-Colosseo_2020.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Fontana_di_Trevi_0851_2013.jpg/500px-Fontana_di_Trevi_0851_2013.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Basilica_di_San_Pietro_in_Vaticano_September_2015-1a.jpg/500px-Basilica_di_San_Pietro_in_Vaticano_September_2015-1a.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Rome_Pantheon.jpg/330px-Rome_Pantheon.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Foro_Romano%2C_Roma%2C_Italia.jpg/500px-Foro_Romano%2C_Roma%2C_Italia.jpg\")",
+      "Bash(open \"/Users/lazarcatalin/Desktop/Projects/Personal/untitled folder/prezentare-roma/index.html\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1200px-Colosseo_2020.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"spanish: %{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Piazza_di_Spagna%2C_Rome_%2850503315896%29.jpg/500px-Piazza_di_Spagna%2C_Rome_%2850503315896%29.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"navona: %{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Piazza_Navona_1.jpg/500px-Piazza_Navona_1.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"castel: %{http_code}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Castel_Sant%27Angelo_at_Night.jpg/500px-Castel_Sant%27Angelo_at_Night.jpg\")"
+    ]
+  }
+}

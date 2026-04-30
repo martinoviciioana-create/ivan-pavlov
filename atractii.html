@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- A doua pagina a site-ului: atractii, galerie, bucatarie si curiozitati -->
+<html lang="ro">
+<head>
+    <!-- Codificare UTF-8 pentru diacritice -->
+    <meta charset="UTF-8">
+
+    <!-- Setare pentru telefoane -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titlul tab-ului -->
+    <title>Atracții și cultură - Roma</title>
+
+    <!-- Acelasi fisier de stil ca prima pagina -->
+    <link rel="stylesheet" href="stil.css">
+
+    <!-- Imagine de fundal pentru antet (specifica acestei pagini) -->
+    <!-- Aici folosim Fontana di Trevi ca sa fie diferita de prima pagina -->
+    <style>
+        header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                              url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Fontana_di_Trevi_0851_2013.jpg/1280px-Fontana_di_Trevi_0851_2013.jpg');
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ANTETUL paginii -->
+    <header>
+        <h1>Atracții și Cultură</h1>
+        <p>Descoperă cele mai frumoase locuri din Roma</p>
+    </header>
+
+    <!-- MENIU DE NAVIGARE -->
+    <!-- "activ" este pe a doua pagina pentru ca aici suntem -->
+    <nav>
+        <a href="index.html">Acasă</a>
+        <a href="atractii.html" class="activ">Atracții & Cultură</a>
+    </nav>
+
+    <!-- CONTINUTUL PRINCIPAL -->
+    <main>
+
+        <!-- Sectiunea 1: Atractii turistice cu descrieri detaliate -->
+        <section id="atractii">
+            <h2>Principalele atracții turistice</h2>
+            <p>
+                Roma este un adevărat muzeu în aer liber. Mai jos sunt cele mai
+                cunoscute monumente pe care merită să le vezi:
+            </p>
+
+            <!-- Fiecare atractie are un mic subtitlu si un paragraf descriptiv -->
+            <h3>Colosseum-ul</h3>
+            <p>
+                Cel mai mare amfiteatru antic din lume, construit între anii
+                <strong>72-80 d.Hr.</strong> sub împărații Vespasian și Titus.
+                Putea găzdui până la 80.000 de spectatori care veneau să asiste
+                la lupte de gladiatori, vânători de animale sălbatice și piese
+                de teatru. Astăzi este unul dintre cele 7 noi minuni ale lumii
+                și atrage peste 7 milioane de vizitatori anual.
+            </p>
+
+            <h3>Forul Roman</h3>
+            <p>
+                Centrul vieții politice, sociale și religioase al Romei antice.
+                Aici se țineau discursurile, se făceau procese și se desfășurau
+                ceremoniile importante. Astăzi se pot vedea ruinele unor temple,
+                bazilici și monumente vechi de peste 2000 de ani.
+            </p>
+
+            <h3>Vaticanul și Bazilica Sfântul Petru</h3>
+            <p>
+                <strong>Vatican</strong> este cel mai mic stat independent din
+                lume (doar 0,49 km²) și sediul Bisericii Catolice. Bazilica
+                Sfântul Petru, construită între 1506 și 1626, este cea mai mare
+                biserică catolică din lume. În interior se află celebra
+                <em>Pietà</em> sculptată de Michelangelo.
+            </p>
+
+            <h3>Capela Sixtină</h3>
+            <p>
+                Faimoasă pentru frescele lui <strong>Michelangelo</strong>,
+                inclusiv tavanul și <em>Judecata de Apoi</em>. Aici se ține
+                conclavul în care se alege un nou Papă.
+            </p>
+
+            <h3>Fontana di Trevi</h3>
+            <p>
+                Cea mai mare fântână barocă din Roma (26 metri înălțime,
+                49 metri lățime), terminată în 1762. Tradiția spune că dacă
+                arunci o monedă peste umăr în fântână, te vei întoarce în Roma.
+                În fiecare zi sunt aruncate aproximativ 3000 de euro!
+            </p>
+
+            <h3>Panteonul</h3>
+            <p>
+                Templu antic construit în jurul anului 126 d.Hr. Are cea mai
+                mare cupolă de beton nearmat din lume, cu un diametru de 43
+                de metri. În centrul cupolei există o deschidere (oculus) prin
+                care intră lumina naturală.
+            </p>
+
+            <h3>Piazza Navona</h3>
+            <p>
+                Una dintre cele mai frumoase piețe din Roma, construită pe
+                locul unui fost stadion antic. În centru se află celebra
+                <em>Fontana dei Quattro Fiumi</em> (Fântâna celor patru fluvii),
+                creată de Bernini.
+            </p>
+
+            <h3>Treptele Spaniole (Piazza di Spagna)</h3>
+            <p>
+                O scară monumentală cu <strong>135 de trepte</strong>, construită
+                în 1725. Este un loc de întâlnire popular și un punct de plecare
+                pentru vizitarea zonei de shopping din Roma.
+            </p>
+
+            <h3>Castel Sant'Angelo</h3>
+            <p>
+                Inițial construit ca mausoleu pentru împăratul Hadrian în anul
+                139 d.Hr., a devenit ulterior fortăreață papală și apoi închisoare.
+                Astăzi este un muzeu și oferă o priveliște superbă asupra Romei.
+            </p>
+        </section>
+
+        <!-- Sectiunea 2: Galerie cu mai multe imagini -->
+        <!-- Imaginile sunt incarcate de pe Wikimedia Commons (sursa libera) -->
+        <section id="galerie">
+            <h2>Galerie foto</h2>
+            <div class="galerie">
+
+                <!-- Fiecare <figure> contine o poza si o legenda -->
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/500px-Colosseo_2020.jpg"
+                         alt="Colosseum-ul din Roma">
+                    <figcaption>Colosseum</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Foro_Romano%2C_Roma%2C_Italia.jpg/500px-Foro_Romano%2C_Roma%2C_Italia.jpg"
+                         alt="Forul Roman">
+                    <figcaption>Forul Roman</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Basilica_di_San_Pietro_in_Vaticano_September_2015-1a.jpg/500px-Basilica_di_San_Pietro_in_Vaticano_September_2015-1a.jpg"
+                         alt="Bazilica Sfantul Petru din Vatican">
+                    <figcaption>Bazilica Sfântul Petru</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Fontana_di_Trevi_0851_2013.jpg/500px-Fontana_di_Trevi_0851_2013.jpg"
+                         alt="Fontana di Trevi">
+                    <figcaption>Fontana di Trevi</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Rome_Pantheon.jpg/500px-Rome_Pantheon.jpg"
+                         alt="Panteonul din Roma">
+                    <figcaption>Panteonul</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Piazza_Navona_1.jpg/500px-Piazza_Navona_1.jpg"
+                         alt="Piazza Navona">
+                    <figcaption>Piazza Navona</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Piazza_di_Spagna%2C_Rome_%2850503315896%29.jpg/500px-Piazza_di_Spagna%2C_Rome_%2850503315896%29.jpg"
+                         alt="Treptele Spaniole">
+                    <figcaption>Treptele Spaniole</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Castel_Sant%27Angelo_at_Night.jpg/500px-Castel_Sant%27Angelo_at_Night.jpg"
+                         alt="Castel Sant'Angelo">
+                    <figcaption>Castel Sant'Angelo</figcaption>
+                </figure>
+
+            </div>
+        </section>
+
+        <!-- Sectiunea 3: Bucataria romana -->
+        <section id="bucatarie">
+            <h2>Bucătăria romană</h2>
+            <p>
+                Mâncarea italiană este apreciată în întreaga lume, iar Roma are
+                preparate proprii care reflectă tradiția locală. Bucătăria
+                romană se bazează pe ingrediente simple, dar de calitate.
+            </p>
+
+            <!-- Subsectiune: paste -->
+            <h3>Paste tradiționale</h3>
+            <ul>
+                <li><strong>Pasta Carbonara</strong> - paste cu ou, brânză pecorino, piper și guanciale (slănină din obraz de porc). Atenție: rețeta originală nu conține smântână!</li>
+                <li><strong>Cacio e Pepe</strong> - paste foarte simple, doar cu brânză pecorino și piper negru</li>
+                <li><strong>Pasta all'Amatriciana</strong> - paste cu sos de roșii, guanciale și pecorino</li>
+                <li><strong>Pasta alla Gricia</strong> - varianta fără roșii a Amatricianei</li>
+            </ul>
+
+            <!-- Subsectiune: alte preparate -->
+            <h3>Alte preparate tipice</h3>
+            <ul>
+                <li><strong>Saltimbocca alla Romana</strong> - file de vițel cu prosciutto și salvie, prăjit în unt</li>
+                <li><strong>Carciofi alla Romana</strong> - anghinare gătită cu mentă, usturoi și ulei de măsline</li>
+                <li><strong>Supplì</strong> - bile de orez prăjite, umplute cu mozzarella și sos de roșii</li>
+                <li><strong>Pizza Romana</strong> - pizza cu blat foarte subțire și crocant (diferită de cea napoletană)</li>
+            </ul>
+
+            <!-- Subsectiune: deserturi -->
+            <h3>Deserturi</h3>
+            <ul>
+                <li><strong>Gelato</strong> - faimoasa înghețată italiană, mai cremoasă decât cea obișnuită</li>
+                <li><strong>Tiramisu</strong> - desert pe bază de mascarpone, cafea și pișcoturi</li>
+                <li><strong>Maritozzo</strong> - chiflă dulce umplută cu frișcă, specifică Romei</li>
+            </ul>
+        </section>
+
+        <!-- Sectiunea 4: Curiozitati despre Roma -->
+        <section id="curiozitati">
+            <h2>Curiozități despre Roma</h2>
+
+            <!-- Folosim cutii ".curiozitate" pentru a evidentia fiecare fapt -->
+            <div class="curiozitate">
+                <strong>Cele 7 coline:</strong> Roma este construită pe șapte coline,
+                de unde și denumirea de "Orașul celor șapte coline".
+            </div>
+
+            <div class="curiozitate">
+                <strong>Pisicile din Roma:</strong> Pisicile fără stăpân sunt
+                protejate prin lege la Roma. Multe trăiesc printre ruinele antice,
+                în special la Largo di Torre Argentina, unde a fost asasinat
+                Iulius Cezar.
+            </div>
+
+            <div class="curiozitate">
+                <strong>Două țări într-un oraș:</strong> Roma este singurul oraș
+                din lume care găzduiește un alt stat suveran - Vaticanul.
+            </div>
+
+            <div class="curiozitate">
+                <strong>Apeducte vechi încă funcționale:</strong> Unele dintre
+                fântânile Romei sunt alimentate și azi prin apeducte construite
+                de romanii antici, acum aproape 2000 de ani.
+            </div>
+
+            <div class="curiozitate">
+                <strong>Fontana di Trevi:</strong> Banii aruncați în fântână
+                (peste 1 milion de euro pe an) sunt strânși și donați unei
+                organizații caritabile.
+            </div>
+
+            <div class="curiozitate">
+                <strong>Cinecittà:</strong> Cele mai mari studiouri de film din
+                Europa se află la Roma și sunt supranumite "Hollywood pe Tibru".
+                Aici s-au filmat producții celebre precum <em>Ben-Hur</em>
+                și <em>Cleopatra</em>.
+            </div>
+
+            <div class="curiozitate">
+                <strong>"Toate drumurile duc la Roma":</strong> Această zicală
+                vine de la rețeaua impresionantă de drumuri romane care se
+                întindea pe peste 80.000 km și avea ca punct central Forul Roman.
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SUBSOLUL paginii -->
+    <footer>
+        <p>Proiect școlar - Prezentare Roma</p>
+        <p>Surse: Wikipedia, Wikimedia Commons</p>
+    </footer>
+
+</body>
+</html>

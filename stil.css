@@ -1,0 +1,200 @@
+/* =====================================================
+   Fisier de stil partajat de ambele pagini ale site-ului
+   ===================================================== */
+
+/* Resetam marginile implicite ale browserului */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stil general pentru intreaga pagina */
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f5ec; /* o culoare crem, ca pergamentul */
+}
+
+/* Antetul paginii - imaginea mare de sus cu titlul */
+header {
+    /* Imaginea de fundal este setata in fiecare pagina (este diferita) */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+/* Titlul principal al paginii */
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+/* Subtitlul de sub titlu */
+header p {
+    font-size: 1.3em;
+    font-style: italic;
+}
+
+/* Bara de navigare cu link-uri catre pagini */
+nav {
+    background-color: #8b0000; /* rosu inchis, culoarea Romei antice */
+    padding: 15px;
+    text-align: center;
+    position: sticky; /* ramane lipita sus cand dam scroll */
+    top: 0;
+    z-index: 10;
+}
+
+/* Link-urile din meniu */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+/* Cand trecem mouse-ul peste un link */
+nav a:hover {
+    color: #ffd700; /* auriu */
+}
+
+/* Link-ul paginii curente este evidentiat */
+nav a.activ {
+    color: #ffd700;
+    border-bottom: 2px solid #ffd700;
+}
+
+/* Containerul principal pentru continut */
+main {
+    max-width: 1000px;
+    margin: 30px auto; /* centram pe orizontala */
+    padding: 0 20px;
+}
+
+/* Fiecare sectiune din pagina */
+section {
+    background-color: white;
+    margin-bottom: 30px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* o umbra discreta */
+}
+
+/* Titlurile sectiunilor */
+section h2 {
+    color: #8b0000;
+    border-bottom: 2px solid #8b0000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Subtitluri (h3) folosite in sectiunea de istorie */
+section h3 {
+    color: #8b0000;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Paragrafele primesc spatiu sub ele */
+section p {
+    margin-bottom: 15px;
+    text-align: justify; /* aliniere pe ambele parti */
+}
+
+/* Galeria de imagini - folosim grid pentru a aseza pozele frumos */
+.galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Fiecare poza din galerie */
+.galerie figure {
+    text-align: center;
+}
+
+.galerie img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* taie imaginea ca sa incapa fara distorsiune */
+    border-radius: 5px;
+    /* O tranzitie ca sa avem un efect lin la hover */
+    transition: transform 0.3s;
+}
+
+/* Cand trecem mouse-ul peste poza, se mareste putin */
+.galerie img:hover {
+    transform: scale(1.05);
+}
+
+/* Textul de sub fiecare poza */
+.galerie figcaption {
+    margin-top: 8px;
+    font-style: italic;
+    color: #555;
+}
+
+/* Listele cu marcatori */
+ul {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+/* Fiecare element din lista are un mic spatiu intre ele */
+ul li {
+    margin-bottom: 8px;
+}
+
+/* Tabelul cu informatii rapide */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+/* Celulele tabelului */
+table td, table th {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Prima coloana este ingrosata */
+table td:first-child {
+    font-weight: bold;
+    width: 40%;
+}
+
+/* Cutie speciala pentru curiozitati - se evidentiaza fata de text */
+.curiozitate {
+    background-color: #fff8dc; /* galben pal */
+    border-left: 4px solid #8b0000;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+/* Subsolul paginii */
+footer {
+    background-color: #8b0000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* Reguli pentru ecrane mici (telefoane) */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+    }
+    nav a {
+        display: block;
+        margin: 5px 0;
+    }
+}
