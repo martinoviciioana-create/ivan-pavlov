@@ -1,514 +1,1265 @@
 <!DOCTYPE html>
-<!-- Versiune HTML a documentatiei, formatata pentru printare ca PDF -->
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <title>Lucrare de Atestat - Prezentare Roma</title>
-    <style>
-        /* Setari pentru pagina la printare */
-        @page {
-            size: A4;
-            margin: 2.5cm 2cm;
-        }
+<meta charset="UTF-8">
+<title>Lucrare de Atestat — Experimentul lui Pavlov</title>
+<style>
 
-        body {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 12pt;
-            line-height: 1.6;
-            color: #000;
-            text-align: justify;
-        }
+@page {
+    size: A4;
+    margin: 2cm 1.8cm;
+}
 
-        /* Pagina de titlu - respecta sablonul oficial al liceului */
-        /* Inaltimea trebuie sa fie sub 24.7cm (A4 minus marginile sus/jos) */
-        .coperta {
-            page-break-after: always;
-            height: 24cm;
-            display: flex;
-            flex-direction: column;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        /* Liceul - sus, centrat */
-        .coperta .liceu {
-            text-align: center;
-            font-size: 14pt;
-        }
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+    line-height: 1.55;
+    color: #000;
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+}
 
-        /* "Proiect pentru obtinerea atestatului..." - centrat, mai mare */
-        .coperta .subtitlu {
-            text-align: center;
-            font-size: 18pt;
-            margin-top: 5cm;
-        }
+/* === COPERTA === */
+.coperta {
+    page-break-after: always;
+    height: 25cm;
+    display: flex;
+    flex-direction: column;
+}
+.coperta .liceu {
+    text-align: center;
+    font-size: 14pt;
+}
+.coperta .subtitlu {
+    text-align: center;
+    font-size: 18pt;
+    margin-top: 5cm;
+}
+.coperta .titlu-proiect {
+    text-align: center;
+    font-size: 26pt;
+    font-weight: bold;
+    margin-top: 1.5cm;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.coperta .info-jos {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12pt;
+    margin-bottom: 1cm;
+}
+.coperta .an {
+    text-align: center;
+    font-size: 12pt;
+}
 
-        /* Titlul proiectului - mare si bold */
-        .coperta .titlu-proiect {
-            text-align: center;
-            font-size: 28pt;
-            font-weight: bold;
-            margin-top: 1.5cm;
-            text-transform: uppercase;
-        }
+/* === CUPRINS === */
+.cuprins {
+    page-break-after: always;
+}
+.cuprins h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1f3a5f;
+}
+.cuprins ol {
+    font-size: 13pt;
+    line-height: 2;
+    margin-left: 30px;
+}
+.cuprins ol ol {
+    list-style-type: lower-alpha;
+    font-size: 12pt;
+}
 
-        /* Zona de jos cu profesor (stanga) si elev (dreapta) */
-        /* margin-top: auto impinge zona spre baza paginii */
-        .coperta .info-jos {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            font-size: 12pt;
-            margin-bottom: 1cm;
-        }
+/* === SECTIUNI / CAPITOLE ===
+   Implicit: NU forteaza page break — lasam continutul sa curga natural.
+   Doar pagina de cod si cea de coperta/cuprins forteaza break. */
+.sectiune {
+    /* nu mai are page-break-before: always */
+    margin-top: 18px;
+}
 
-        .coperta .profesor {
-            text-align: left;
-        }
+/* Pagina cu codul sursa - mereu pe pagina noua */
+.cod-pagina {
+    page-break-before: always;
+}
 
-        .coperta .elev {
-            text-align: left;
-        }
+/* Pentru a marca un break explicit cand e nevoie */
+.break-before { page-break-before: always; }
+.no-break { page-break-inside: avoid; }
 
-        /* Anul scolar - centrat, jos de tot */
-        .coperta .an {
-            text-align: center;
-            font-size: 12pt;
-        }
+h1 {
+    font-size: 18pt;
+    color: #1f3a5f;
+    margin-top: 0;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #1f3a5f;
+    padding-bottom: 8px;
+}
 
-        /* Cuprins */
-        .cuprins {
-            page-break-after: always;
-        }
+h2 {
+    font-size: 14pt;
+    color: #1f3a5f;
+    margin-top: 22px;
+    margin-bottom: 12px;
+}
 
-        .cuprins h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+h3 {
+    font-size: 12.5pt;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-style: italic;
+    color: #2c5d8f;
+}
 
-        .cuprins ol {
-            font-size: 13pt;
-            line-height: 2;
-            list-style-type: decimal;
-            margin-left: 30px;
-        }
+p {
+    margin: 0 0 11px 0;
+    text-indent: 1.2em;
+}
 
-        .cuprins ol ol {
-            list-style-type: lower-alpha;
-            font-size: 12pt;
-        }
+h1 + p, h2 + p, h3 + p {
+    text-indent: 0;
+}
 
-        /* Capitole */
-        h1 {
-            font-size: 18pt;
-            color: #8b0000;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            page-break-before: always;
-        }
+/* === CAPTURI DE ECRAN ===
+   Doua jumatati alaturate, pe aceeasi pagina cu titlul sectiunii. */
+.captura-pereche {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 12px 0 6px 0;
+    page-break-inside: avoid;
+}
+.captura-pereche img {
+    width: 50%;
+    height: auto;
+    max-height: 21cm;
+    object-fit: contain;
+    border: 1px solid #999;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.legenda {
+    text-align: center;
+    font-style: italic;
+    font-size: 10.5pt;
+    color: #444;
+    margin-bottom: 14px;
+}
 
-        h2 {
-            font-size: 16pt;
-            color: #8b0000;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
+/* === BLOCURI DE COD === */
+.cod-pagina h1 {
+    margin-bottom: 12px;
+}
+pre {
+    background-color: #f4f6f8;
+    border: 1px solid #d0d7de;
+    padding: 10px 12px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 8.5pt;
+    line-height: 1.35;
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin: 8px 0;
+}
+code {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+    background-color: #f4f6f8;
+    padding: 1px 4px;
+    border-radius: 2px;
+}
+pre code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+}
 
-        h3 {
-            font-size: 13pt;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-style: italic;
-        }
+/* === LISTE === */
+ul, ol {
+    margin: 0 0 12px 30px;
+}
+li {
+    margin-bottom: 5px;
+}
 
-        p {
-            margin-bottom: 12px;
-            text-indent: 1.5em;
-        }
+/* === TABEL === */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    page-break-inside: avoid;
+}
+table th, table td {
+    border: 1px solid #555;
+    padding: 7px;
+    text-align: left;
+}
+table th {
+    background-color: #1f3a5f;
+    color: white;
+}
 
-        /* Blocuri de cod */
-        pre {
-            background-color: #f4f4f4;
-            border: 1px solid #ccc;
-            padding: 10px;
-            font-family: "Courier New", monospace;
-            font-size: 10pt;
-            white-space: pre-wrap;
-            page-break-inside: avoid;
-            margin: 10px 0;
-        }
-
-        code {
-            background-color: #f4f4f4;
-            padding: 1px 4px;
-            font-family: "Courier New", monospace;
-            font-size: 10pt;
-        }
-
-        /* Liste */
-        ul, ol {
-            margin-left: 30px;
-            margin-bottom: 12px;
-        }
-
-        ul li, ol li {
-            margin-bottom: 6px;
-        }
-
-        /* Tabel */
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin: 15px 0;
-            page-break-inside: avoid;
-        }
-
-        table th, table td {
-            border: 1px solid #555;
-            padding: 8px;
-            text-align: left;
-        }
-
-        table th {
-            background-color: #8b0000;
-            color: white;
-        }
-
-        /* Subliniem caracterul deosebit al primei pagini de titlu */
-        hr {
-            border: none;
-            border-top: 1px solid #8b0000;
-            margin: 30px 0;
-        }
-
-        /* Cand printam, nu vrem sectiuni rupte aiurea */
-        .capitol {
-            page-break-before: always;
-        }
-
-        .capitol:first-of-type {
-            page-break-before: auto;
-        }
-    </style>
+</style>
 </head>
 <body>
 
-    <!-- COPERTA / PAGINA DE TITLU - urmeaza sablonul oficial al liceului -->
-    <div class="coperta">
+<!-- ================================================================== -->
+<!-- COPERTA                                                            -->
+<!-- ================================================================== -->
+<div class="coperta">
+    <div class="liceu">
+        Colegiul Național "Spiru Haret" București
+    </div>
 
-        <!-- Numele liceului - sus -->
-        <div class="liceu">
-            Colegiul Național "Spiru Haret" București
+    <div class="subtitlu">
+        Proiect pentru obținerea atestatului profesional<br>
+        la disciplina informatică
+    </div>
+
+    <div class="titlu-proiect">
+        Experimentul lui Pavlov
+    </div>
+
+    <div class="info-jos">
+        <div class="profesor">
+            Profesor coordonator:<br>
+            Soare Daniela
         </div>
-
-        <!-- Subtitlu cu tipul lucrarii -->
-        <div class="subtitlu">
-            Proiect pentru obținerea atestatului profesional<br>
-            la disciplina informatică
-        </div>
-
-        <!-- Titlul proiectului - mare, in centru -->
-        <div class="titlu-proiect">
-            ROMA
-        </div>
-
-        <!-- Profesor (stanga) si elev (dreapta) - jos -->
-        <div class="info-jos">
-            <div class="profesor">
-                Profesor coordonator:<br>
-                Soare Daniela
-            </div>
-            <div class="elev">
-                Elev:<br>
-                Martinovici Ioana Alexandra<br>
-                Clasa: a XII-a B
-            </div>
-        </div>
-
-        <!-- Anul scolar - in centru, jos de tot -->
-        <div class="an">
-            An școlar: 2025-2026
+        <div class="elev">
+            Elev:<br>
+            Martinovici Ioana Alexandra<br>
+            Clasa: a XII-a B
         </div>
     </div>
 
-    <!-- CUPRINS -->
-    <div class="cuprins">
-        <h2>Cuprins</h2>
-        <ol>
-            <li>Argument</li>
-            <li>Descrierea proiectului</li>
-            <li>Tehnologii folosite
-                <ol>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                </ol>
-            </li>
-            <li>Structura aplicației
-                <ol>
-                    <li>Organizarea fișierelor</li>
-                    <li>Pagina principală (index.html)</li>
-                    <li>Pagina de atracții (atractii.html)</li>
-                    <li>Fișierul de stil (stil.css)</li>
-                </ol>
-            </li>
-            <li>Detalii de implementare
-                <ol>
-                    <li>Structura HTML</li>
-                    <li>Stilizare CSS</li>
-                    <li>Design responsive</li>
-                    <li>Galeria de imagini</li>
-                </ol>
-            </li>
-            <li>Mod de utilizare</li>
-            <li>Concluzii</li>
-            <li>Bibliografie</li>
-        </ol>
+    <div class="an">
+        An școlar: 2025 - 2026
     </div>
+</div>
 
-    <!-- CAPITOLUL 1: ARGUMENT -->
-    <div class="capitol">
-        <h1>1. Argument</h1>
-        <p>
-            Am ales ca temă pentru lucrarea de atestat realizarea unei pagini web
-            de prezentare a orașului Roma, capitala Italiei. Am ales acest subiect
-            deoarece Roma este unul dintre cele mai importante orașe din istoria
-            omenirii și are o legătură strânsă cu cultura românească — chiar și
-            numele "România" provine de la cuvântul "roman".
-        </p>
-        <p>
-            Realizarea unui site web mi-a permis să aplic cunoștințele de
-            informatică acumulate în timpul liceului, în special cele legate
-            de limbajele HTML și CSS, dar și să îmi dezvolt creativitatea prin
-            alegerea culorilor, a imaginilor și a modului de organizare a
-            informației.
-        </p>
-        <p>
-            Proiectul îmbină astfel <strong>tehnologia</strong> cu <strong>istoria</strong>
-            și <strong>cultura</strong>, fiind util atât din punct de vedere
-            educațional, cât și informativ pentru orice persoană care dorește
-            să afle mai multe despre Orașul Etern.
-        </p>
+<!-- ================================================================== -->
+<!-- CUPRINS                                                            -->
+<!-- ================================================================== -->
+<div class="cuprins">
+    <h2>Cuprins</h2>
+    <ol>
+        <li>Argument</li>
+        <li>Pagina principală — index.html
+            <ol>
+                <li>Codul sursă</li>
+                <li>Explicația codului</li>
+            </ol>
+        </li>
+        <li>Pagina de aplicații — atractii.html
+            <ol>
+                <li>Codul sursă</li>
+                <li>Explicația codului</li>
+            </ol>
+        </li>
+        <li>Fișierul de stil — stil.css
+            <ol>
+                <li>Codul sursă</li>
+                <li>Explicația codului</li>
+            </ol>
+        </li>
+        <li>Concluzii</li>
+        <li>Bibliografie</li>
+    </ol>
+</div>
+
+<!-- ================================================================== -->
+<!-- 1. ARGUMENT                                                        -->
+<!-- ================================================================== -->
+<div class="sectiune">
+    <h1>1. Argument</h1>
+    <p>
+        Am ales ca temă pentru lucrarea de atestat realizarea unui site web
+        despre <strong>experimentul lui Ivan Petrovici Pavlov</strong>, unul
+        dintre cele mai importante experimente din istoria psihologiei. Pavlov
+        a descoperit, la sfârșitul secolului al XIX-lea, fenomenul numit
+        <em>condiționare clasică</em> — felul în care un organism poate învăța
+        să asocieze doi stimuli și să reacționeze la unul ca și cum ar fi
+        celălalt.
+    </p>
+    <p>
+        Tema mi s-a părut interesantă pentru că face legătura între
+        <strong>biologie</strong>, <strong>psihologie</strong> și
+        <strong>comportament uman</strong>: deși experimentul a fost făcut pe
+        câini, principiile descoperite explică multe lucruri din viața noastră
+        de zi cu zi — de la reclame, la teama de stomatolog sau la modul în
+        care reacționăm la notificările telefonului.
+    </p>
+    <p>
+        Realizarea unui site web mi-a permis să aplic cunoștințele de
+        <strong>HTML</strong> și <strong>CSS</strong> învățate în orele de
+        informatică. Site-ul este împărțit în două pagini: prima prezintă
+        <em>teoria și experimentul</em>, iar a doua prezintă
+        <em>aplicațiile moderne și curiozitățile</em>.
+    </p>
+</div>
+
+<!-- ================================================================== -->
+<!-- 2. PAGINA PRINCIPALA - intro + captura side-by-side                -->
+<!-- ================================================================== -->
+<div class="sectiune">
+    <h1>2. Pagina principală — index.html</h1>
+    <p>
+        Această pagină este punctul de intrare în site și conține partea
+        teoretică: cine a fost Pavlov, conceptele de bază ale condiționării
+        clasice, etapele experimentului, alte procese descoperite, precum și
+        un tabel cu informații rapide despre savant. În continuare este
+        prezentată captura de ecran a paginii (împărțită în două jumătăți
+        alăturate, pentru a încăpea pe pagină), urmată de codul sursă și de
+        explicația lui.
+    </p>
+    <div class="captura-pereche">
+        <img src="capturi/index_half1.png" alt="Pagina principala - jumatatea de sus">
+        <img src="capturi/index_half2.png" alt="Pagina principala - jumatatea de jos">
     </div>
+    <div class="legenda">Pagina principală a site-ului (index.html)</div>
+</div>
 
-    <!-- CAPITOLUL 2: DESCRIEREA PROIECTULUI -->
-    <div class="capitol">
-        <h1>2. Descrierea proiectului</h1>
-        <p>
-            Proiectul constă într-un site web format din <strong>două pagini HTML</strong>,
-            conectate între ele printr-un meniu de navigare. Site-ul prezintă
-            orașul Roma sub diferite aspecte:
-        </p>
-        <ul>
-            <li><strong>Pagina principală</strong> conține informații generale
-            despre oraș, istoria Romei împărțită pe perioade, geografia și clima,
-            precum și un tabel cu date utile.</li>
-            <li><strong>Pagina de atracții</strong> prezintă cele mai cunoscute
-            monumente ale Romei, o galerie foto, bucătăria tradițională romană
-            și diverse curiozități.</li>
-        </ul>
-        <p>
-            Site-ul este realizat <strong>integral în limba română</strong> și
-            folosește un design inspirat din culorile clasice ale Romei antice
-            (roșu închis și auriu), cu o tipografie serif (Georgia) care amintește
-            de inscripțiile romane.
-        </p>
-    </div>
-
-    <!-- CAPITOLUL 3: TEHNOLOGII FOLOSITE -->
-    <div class="capitol">
-        <h1>3. Tehnologii folosite</h1>
-
-        <h2>3.1. HTML (HyperText Markup Language)</h2>
-        <p>
-            HTML este limbajul standard folosit pentru crearea paginilor web.
-            El definește <strong>structura</strong> unei pagini, prin elemente
-            numite <em>tag-uri</em> (de exemplu: <code>&lt;h1&gt;</code>,
-            <code>&lt;p&gt;</code>, <code>&lt;img&gt;</code>).
-        </p>
-        <p>
-            Fiecare pagină a site-ului este un fișier <code>.html</code> care conține:
-        </p>
-        <ul>
-            <li>antetul <code>&lt;head&gt;</code> cu informații despre pagină
-            (titlu, codificare)</li>
-            <li>corpul <code>&lt;body&gt;</code> cu conținutul vizibil de utilizator</li>
-        </ul>
-        <p>
-            În proiectul meu am folosit <strong>HTML5</strong>, varianta modernă
-            a limbajului, care introduce elemente semantice utile precum
-            <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
-            <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code> și
-            <code>&lt;footer&gt;</code>.
-        </p>
-
-        <h2>3.2. CSS (Cascading Style Sheets)</h2>
-        <p>
-            CSS este limbajul folosit pentru a <strong>stiliza</strong> o pagină
-            web — culori, fonturi, dimensiuni, poziționare etc. Practic, dacă
-            HTML stabilește <em>ce</em> afișăm, CSS stabilește <em>cum arată</em>
-            ceea ce afișăm.
-        </p>
-        <p>
-            Am folosit un fișier CSS extern (<code>stil.css</code>) care este
-            aplicat ambelor pagini. Avantajul acestei metode este că, dacă vreau
-            să schimb un stil (de exemplu culoarea meniului), îl modific într-un
-            singur loc și schimbarea apare automat pe toate paginile.
-        </p>
-        <p>În stilizarea proiectului am folosit:</p>
-        <ul>
-            <li><strong>CSS Grid</strong> — pentru afișarea galeriei de imagini</li>
-            <li><strong>Flexbox</strong> și <strong>box model</strong> — pentru
-            aranjarea elementelor</li>
-            <li><strong>Media queries</strong> — pentru ca site-ul să arate bine
-            și pe telefoane</li>
-            <li><strong>Pseudo-clase</strong> (<code>:hover</code>) — pentru
-            efecte la trecerea mouse-ului</li>
-            <li><strong>Tranziții</strong> — pentru animații line</li>
-        </ul>
-    </div>
-
-    <!-- CAPITOLUL 4: STRUCTURA APLICATIEI -->
-    <div class="capitol">
-        <h1>4. Structura aplicației</h1>
-
-        <h2>4.1. Organizarea fișierelor</h2>
-        <p>Proiectul este compus din <strong>3 fișiere</strong> plasate în același folder:</p>
-        <pre>prezentare-roma/
-├── index.html       (pagina principală)
-├── atractii.html    (pagina de atracții și cultură)
-└── stil.css         (fișierul cu stiluri, comun ambelor pagini)</pre>
-
-        <h2>4.2. Pagina principală (index.html)</h2>
-        <p>Pagina de start a site-ului conține următoarele secțiuni:</p>
-        <ol>
-            <li><strong>Antet</strong> — un banner mare cu o imagine de fundal
-            cu Colosseum-ul, peste care apare titlul "Roma — Orașul Etern".</li>
-            <li><strong>Meniu de navigare</strong> — două butoane pentru a
-            comuta între cele două pagini ale site-ului.</li>
-            <li><strong>Despre Roma</strong> — informații generale: poziție
-            geografică, populație, supranume.</li>
-            <li><strong>Istoria Romei</strong> — prezentată cronologic în 5 perioade:
-                <ul>
-                    <li>Fondarea (753 î.Hr.)</li>
-                    <li>Republica Romană</li>
-                    <li>Imperiul Roman</li>
-                    <li>Roma papală</li>
-                    <li>Roma modernă</li>
-                </ul>
-            </li>
-            <li><strong>Geografie și climă</strong> — cele 7 coline, râul Tibru,
-            clima mediteraneană.</li>
-            <li><strong>Tabel cu informații rapide</strong> — date utile
-            (populație, suprafață, limbă, monedă etc.).</li>
-            <li><strong>Subsol</strong> — informații despre proiect și surse.</li>
-        </ol>
-
-        <h2>4.3. Pagina de atracții (atractii.html)</h2>
-        <p>A doua pagină a site-ului are următoarele secțiuni:</p>
-        <ol>
-            <li><strong>Antet</strong> — banner cu o imagine de fundal cu
-            Fontana di Trevi.</li>
-            <li><strong>Meniu de navigare</strong> — identic cu prima pagină.</li>
-            <li><strong>Atracții turistice</strong> — descrieri detaliate pentru
-            9 monumente: Colosseum, Forul Roman, Vaticanul, Capela Sixtină,
-            Fontana di Trevi, Panteonul, Piazza Navona, Treptele Spaniole,
-            Castel Sant'Angelo.</li>
-            <li><strong>Galerie foto</strong> — 8 imagini ale celor mai
-            importante monumente, cu un efect de mărire la trecerea mouse-ului.</li>
-            <li><strong>Bucătărie romană</strong> — împărțită pe categorii:
-            paste, preparate tradiționale, deserturi.</li>
-            <li><strong>Curiozități</strong> — 7 fapte interesante, prezentate
-            în cutii evidențiate.</li>
-            <li><strong>Subsol</strong> — identic cu prima pagină.</li>
-        </ol>
-
-        <h2>4.4. Fișierul de stil (stil.css)</h2>
-        <p>
-            Acest fișier conține toate regulile de stilizare aplicate ambelor
-            pagini. Principalele reguli definite sunt:
-        </p>
-        <ul>
-            <li>stiluri generale pentru <code>body</code>, <code>header</code>,
-            <code>nav</code>, <code>main</code>, <code>footer</code></li>
-            <li>stiluri pentru secțiuni și titluri</li>
-            <li>stiluri pentru galeria de imagini (grid + efect hover)</li>
-            <li>stiluri pentru tabel</li>
-            <li>stiluri pentru cutia de curiozități</li>
-            <li>reguli responsive pentru ecrane mici</li>
-        </ul>
-    </div>
-
-    <!-- CAPITOLUL 5: DETALII DE IMPLEMENTARE -->
-    <div class="capitol">
-        <h1>5. Detalii de implementare</h1>
-
-        <h2>5.1. Structura HTML</h2>
-        <p>Fiecare pagină HTML respectă structura standard:</p>
-        <pre>&lt;!DOCTYPE html&gt;
-&lt;html lang="ro"&gt;
+<!-- 2.1 — codul -->
+<div class="cod-pagina">
+    <h1>2.1. Codul sursă — index.html</h1>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;!-- Limba paginii este romana, ca sa fie inteleasa de cititoarele de ecran --&gt;
+&lt;html lang=&quot;ro&quot;&gt;
 &lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Roma - Orașul Etern&lt;/title&gt;
-    &lt;link rel="stylesheet" href="stil.css"&gt;
+    &lt;!-- Setam codificarea pe UTF-8 ca sa apara corect diacriticele (ă, î, ș, ț, â) --&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+
+    &lt;!-- Face pagina sa arate bine si pe telefon (responsive) --&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+
+    &lt;!-- Titlul care apare in tab-ul browserului --&gt;
+    &lt;title&gt;Experimentul lui Pavlov - Condiționarea clasică&lt;/title&gt;
+
+    &lt;!-- Includem fisierul de stil partajat de ambele pagini --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;stil.css&quot;&gt;
+
+    &lt;!-- Setam imaginea de fundal pentru antet (specifica acestei pagini) --&gt;
+    &lt;!-- Folosim portretul lui Ivan Pavlov din Wikimedia Commons --&gt;
+    &lt;style&gt;
+        header {
+            background-image: linear-gradient(rgba(31, 58, 95, 0.7), rgba(31, 58, 95, 0.7)),
+                              url(&#x27;https://pymstatic.com/7157/conversions/ivan-pavlov-social.jpg&#x27;);
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
+
 &lt;body&gt;
-    &lt;header&gt;...&lt;/header&gt;
-    &lt;nav&gt;...&lt;/nav&gt;
+
+    &lt;!-- ANTETUL: titlul mare al paginii --&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Experimentul lui Pavlov&lt;/h1&gt;
+        &lt;p&gt;Teoria condiționării clasice&lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;!-- MENIU DE NAVIGARE: link-uri catre cele doua pagini --&gt;
+    &lt;!-- Clasa &quot;activ&quot; marcheaza pagina curenta --&gt;
+    &lt;nav&gt;
+        &lt;a href=&quot;index.html&quot; class=&quot;activ&quot;&gt;Acasă&lt;/a&gt;
+        &lt;a href=&quot;atractii.html&quot;&gt;Aplicații &amp; Curiozități&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- CONTINUTUL PRINCIPAL al paginii --&gt;
     &lt;main&gt;
-        &lt;section&gt;...&lt;/section&gt;
+
+        &lt;!-- Sectiunea 1: Despre Pavlov si introducerea generala --&gt;
+        &lt;section id=&quot;despre&quot;&gt;
+            &lt;h2&gt;Cine a fost Ivan Pavlov?&lt;/h2&gt;
+            &lt;p&gt;
+                &lt;strong&gt;Ivan Petrovici Pavlov&lt;/strong&gt; (1849 - 1936) a fost un
+                fiziolog rus, cunoscut pentru cercetările sale asupra digestiei
+                și, mai ales, pentru descoperirea fenomenului de
+                &lt;em&gt;condiționare clasică&lt;/em&gt;.
+            &lt;/p&gt;
+            &lt;p&gt;
+                În anul &lt;strong&gt;1904&lt;/strong&gt; a primit
+                &lt;strong&gt;Premiul Nobel pentru Fiziologie sau Medicină&lt;/strong&gt;,
+                pentru studiile sale asupra glandelor digestive. Tot în timpul
+                acestor experimente a observat un fenomen surprinzător care
+                avea să schimbe psihologia modernă.
+            &lt;/p&gt;
+            &lt;p&gt;
+                Descoperirile lui Pavlov stau la baza unei mari ramuri din
+                psihologie numită &lt;strong&gt;behaviorism&lt;/strong&gt;, care studiază
+                comportamentul observabil al ființelor vii.
+            &lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Sectiunea 2: Concepte cheie --&gt;
+        &lt;section id=&quot;concepte&quot;&gt;
+            &lt;h2&gt;Concepte cheie&lt;/h2&gt;
+
+            &lt;div class=&quot;concept&quot;&gt;
+                &lt;strong&gt;Stimul necondiționat (SN):&lt;/strong&gt; un stimul care
+                produce o reacție în mod natural, fără să fie nevoie de învățare
+                (ex: mâncarea care provoacă salivație).
+            &lt;/div&gt;
+
+            &lt;div class=&quot;concept&quot;&gt;
+                &lt;strong&gt;Răspuns necondiționat (RN):&lt;/strong&gt; reacția automată
+                produsă de stimulul necondiționat (ex: salivația când câinele
+                vede mâncare).
+            &lt;/div&gt;
+
+            &lt;div class=&quot;concept&quot;&gt;
+                &lt;strong&gt;Stimul neutru (SNT):&lt;/strong&gt; un stimul care, înainte
+                de condiționare, nu produce nicio reacție specifică (ex: sunetul
+                unui clopoțel).
+            &lt;/div&gt;
+
+            &lt;div class=&quot;concept&quot;&gt;
+                &lt;strong&gt;Stimul condiționat (SC):&lt;/strong&gt; stimulul care, după
+                ce a fost asociat repetat cu cel necondiționat, ajunge să
+                producă singur reacția (clopoțelul devine SC).
+            &lt;/div&gt;
+
+            &lt;div class=&quot;concept&quot;&gt;
+                &lt;strong&gt;Răspuns condiționat (RC):&lt;/strong&gt; reacția învățată,
+                produsă de stimulul condiționat (salivația la auzul
+                clopoțelului, fără mâncare).
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Sectiunea 3: Experimentul propriu-zis - etape --&gt;
+        &lt;section id=&quot;experiment&quot;&gt;
+            &lt;h2&gt;Cum a decurs experimentul&lt;/h2&gt;
+            &lt;p&gt;
+                Pavlov studia digestia la câini, măsurând cantitatea de salivă
+                pe care aceștia o produceau atunci când li se dădea mâncare.
+                A observat însă un lucru ciudat: după un timp, câinii începeau
+                să saliveze chiar și înainte să vadă mâncarea — doar la auzul
+                pașilor asistentului care o aducea.
+            &lt;/p&gt;
+            &lt;p&gt;
+                Pentru a studia sistematic acest fenomen, a organizat un
+                experiment în mai multe etape:
+            &lt;/p&gt;
+
+            &lt;div class=&quot;etapa&quot;&gt;
+                &lt;h4&gt;Etapa 1 — Înainte de condiționare&lt;/h4&gt;
+                &lt;p&gt;
+                    Câinele primește &lt;strong&gt;mâncare&lt;/strong&gt; (stimul
+                    necondiționat) și salivează (răspuns necondiționat).
+                    Separat, se aude un &lt;strong&gt;clopoțel&lt;/strong&gt; (stimul
+                    neutru) — câinele nu are nicio reacție.
+                &lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;etapa&quot;&gt;
+                &lt;h4&gt;Etapa 2 — În timpul condiționării&lt;/h4&gt;
+                &lt;p&gt;
+                    De fiecare dată când câinelui i se aduce mâncarea, se sună
+                    și clopoțelul. Astfel, cei doi stimuli se prezintă
+                    &lt;strong&gt;împreună, în mod repetat&lt;/strong&gt;. Câinele
+                    salivează (răspuns necondiționat la mâncare).
+                &lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;etapa&quot;&gt;
+                &lt;h4&gt;Etapa 3 — După condiționare&lt;/h4&gt;
+                &lt;p&gt;
+                    Acum, doar sunetul clopoțelului (devenit
+                    &lt;strong&gt;stimul condiționat&lt;/strong&gt;) este suficient pentru
+                    ca animalul să saliveze. Câinele a învățat că sunetul
+                    anunță mâncarea — apare un
+                    &lt;strong&gt;răspuns condiționat&lt;/strong&gt;.
+                &lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;p&gt;
+                Pavlov a publicat rezultatele acestor cercetări în lucrarea
+                &lt;em&gt;&quot;Reflexele condiționate&quot;&lt;/em&gt; (1927), care a devenit una
+                dintre cărțile fundamentale ale psihologiei moderne.
+            &lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Sectiunea 4: Procese suplimentare descoperite de Pavlov --&gt;
+        &lt;section id=&quot;procese&quot;&gt;
+            &lt;h2&gt;Procese descoperite de Pavlov&lt;/h2&gt;
+
+            &lt;h3&gt;Achiziția&lt;/h3&gt;
+            &lt;p&gt;
+                Procesul prin care se învață legătura dintre stimulul neutru
+                și cel necondiționat. Cu cât asocierea este mai frecventă, cu
+                atât răspunsul condiționat devine mai puternic.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Extincția&lt;/h3&gt;
+            &lt;p&gt;
+                Dacă, după condiționare, clopoțelul sună de mai multe ori la
+                rând &lt;em&gt;fără&lt;/em&gt; a fi urmat de mâncare, răspunsul condiționat
+                slăbește treptat și, în cele din urmă, dispare.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Recuperarea spontană&lt;/h3&gt;
+            &lt;p&gt;
+                Chiar și după extincție, dacă lăsăm o pauză și sunăm din nou
+                clopoțelul, câinele poate saliva din nou — răspunsul învățat
+                reapare spontan, deși mai slab.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Generalizarea&lt;/h3&gt;
+            &lt;p&gt;
+                Câinele salivează nu doar la sunetul clopoțelului folosit în
+                experiment, ci și la sunete asemănătoare (un alt clopoțel sau
+                un fluier). Stimuli similari produc același răspuns.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Discriminarea&lt;/h3&gt;
+            &lt;p&gt;
+                Dacă numai un anumit sunet este urmat de mâncare, iar altele
+                nu, câinele învață să răspundă &lt;em&gt;doar&lt;/em&gt; la cel &quot;corect&quot;
+                și ignoră restul. Este opusul generalizării.
+            &lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Sectiunea 5: Tabel cu informatii rapide despre Pavlov --&gt;
+        &lt;section id=&quot;informatii&quot;&gt;
+            &lt;h2&gt;Informații rapide&lt;/h2&gt;
+            &lt;table&gt;
+                &lt;!-- Fiecare rand este o pereche eticheta-valoare --&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Nume complet&lt;/td&gt;
+                    &lt;td&gt;Ivan Petrovici Pavlov&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Născut&lt;/td&gt;
+                    &lt;td&gt;26 septembrie 1849, Riazan (Rusia)&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Decedat&lt;/td&gt;
+                    &lt;td&gt;27 februarie 1936, Leningrad&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Naționalitate&lt;/td&gt;
+                    &lt;td&gt;Rus&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Domeniu&lt;/td&gt;
+                    &lt;td&gt;Fiziologie, psihologie&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Premiul Nobel&lt;/td&gt;
+                    &lt;td&gt;1904 (Fiziologie sau Medicină)&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Lucrare celebră&lt;/td&gt;
+                    &lt;td&gt;Reflexele condiționate (1927)&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Animale folosite&lt;/td&gt;
+                    &lt;td&gt;Câini&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Concept cheie&lt;/td&gt;
+                    &lt;td&gt;Condiționare clasică&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Curent fondat&lt;/td&gt;
+                    &lt;td&gt;Behaviorism (împreună cu Watson)&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/section&gt;
+
     &lt;/main&gt;
-    &lt;footer&gt;...&lt;/footer&gt;
+
+    &lt;!-- SUBSOLUL paginii --&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Proiect școlar — Experimentul lui Pavlov&lt;/p&gt;
+        &lt;p&gt;Surse: Wikipedia, Wikimedia Commons&lt;/p&gt;
+    &lt;/footer&gt;
+
 &lt;/body&gt;
-&lt;/html&gt;</pre>
-        <p>
-            Atributul <code>lang="ro"</code> indică faptul că pagina este în
-            limba română, iar <code>&lt;meta charset="UTF-8"&gt;</code> permite
-            afișarea corectă a diacriticelor (ă, â, î, ș, ț).
-        </p>
+&lt;/html&gt;
+</code></pre>
+</div>
 
-        <h2>5.2. Stilizare CSS</h2>
-        <p>
-            Pentru a obține un aspect plăcut, am folosit o paletă de culori
-            inspirată din Roma antică:
-        </p>
-        <table>
-            <tr>
-                <th>Culoare</th>
-                <th>Cod hex</th>
-                <th>Utilizare</th>
-            </tr>
-            <tr>
-                <td>Roșu închis</td>
-                <td>#8b0000</td>
-                <td>meniul, titlurile, subsol</td>
-            </tr>
-            <tr>
-                <td>Auriu</td>
-                <td>#ffd700</td>
-                <td>accente, link-uri active</td>
-            </tr>
-            <tr>
-                <td>Crem</td>
-                <td>#f9f5ec</td>
-                <td>fundalul paginii</td>
-            </tr>
-            <tr>
-                <td>Galben pal</td>
-                <td>#fff8dc</td>
-                <td>cutiile de curiozități</td>
-            </tr>
-        </table>
-        <p>
-            Am folosit fontul <strong>Georgia</strong> (sau "Times New Roman"
-            ca alternativă), un font cu serife care amintește de inscripțiile
-            romane antice.
-        </p>
+<!-- 2.2 — explicatia (continua dupa cod, fara break fortat) -->
+<div class="sectiune">
+    <h1>2.2. Explicația codului — index.html</h1>
 
-        <h2>5.3. Design responsive</h2>
-        <p>
-            Pentru ca site-ul să arate bine atât pe calculator, cât și pe
-            telefon, am folosit <em>media queries</em>:
-        </p>
-        <pre>@media (max-width: 600px) {
+    <h2>Antetul documentului (head)</h2>
+    <p>
+        În secțiunea <code>&lt;head&gt;</code> sunt setate informațiile pe care
+        browserul le folosește pentru afișare, dar care nu apar direct în
+        pagină:
+    </p>
+    <ul>
+        <li><code>&lt;meta charset="UTF-8"&gt;</code> — codificarea de caractere,
+        necesară pentru afișarea corectă a diacriticelor (ă, â, î, ș, ț).</li>
+        <li><code>&lt;meta name="viewport"&gt;</code> — face pagina să arate
+        bine și pe telefoane (design responsive).</li>
+        <li><code>&lt;title&gt;</code> — titlul tab-ului din browser.</li>
+        <li><code>&lt;link rel="stylesheet" href="stil.css"&gt;</code> — leagă
+        pagina de fișierul cu stiluri.</li>
+        <li>Un bloc <code>&lt;style&gt;</code> cu o regulă specifică doar
+        acestei pagini, pentru imaginea de fundal a antetului (portretul lui
+        Pavlov).</li>
+    </ul>
+
+    <h2>Structura semantică a corpului paginii</h2>
+    <p>
+        Pagina folosește elemente <strong>semantice</strong> din HTML5, care
+        descriu rolul fiecărei zone (nu doar aspectul ei):
+    </p>
+    <ul>
+        <li><code>&lt;header&gt;</code> — antetul mare cu titlul și subtitlul,
+        peste imaginea cu Pavlov.</li>
+        <li><code>&lt;nav&gt;</code> — bara de navigare cu cele două link-uri.
+        Link-ul paginii curente are clasa <code>activ</code> pentru a fi
+        evidențiat în meniu.</li>
+        <li><code>&lt;main&gt;</code> — conținutul principal al paginii.</li>
+        <li><code>&lt;section&gt;</code> — fiecare zonă tematică (despre,
+        concepte, experiment, procese, informații).</li>
+        <li><code>&lt;footer&gt;</code> — subsolul cu informații despre proiect.</li>
+    </ul>
+
+    <h2>Secțiunile de conținut</h2>
+    <p>
+        Pagina conține <strong>cinci secțiuni</strong>, fiecare cu rol clar:
+    </p>
+    <ol>
+        <li><strong>"Cine a fost Ivan Pavlov?"</strong> — introducere despre
+        savant: biografie scurtă, premiul Nobel din 1904, legătura cu
+        behaviorismul.</li>
+        <li><strong>"Concepte cheie"</strong> — cinci definiții esențiale
+        (stimul / răspuns necondiționat, neutru, condiționat). Fiecare definiție
+        este pusă într-o cutie cu clasa <code>.concept</code> care îi dă fundal
+        bleu și o bară laterală albastră.</li>
+        <li><strong>"Cum a decurs experimentul"</strong> — etapele propriu-zise
+        ale experimentului, prezentate în trei cutii cu clasa
+        <code>.etapa</code> (înainte / în timpul / după condiționare).</li>
+        <li><strong>"Procese descoperite de Pavlov"</strong> — alte fenomene
+        importante observate de el: achiziția, extincția, recuperarea spontană,
+        generalizarea, discriminarea.</li>
+        <li><strong>"Informații rapide"</strong> — un tabel HTML cu date
+        biografice (nume, naționalitate, date de naștere și deces, premiu Nobel
+        etc.), pentru o privire rapidă.</li>
+    </ol>
+
+    <h2>Elemente de marcaj folosite</h2>
+    <p>
+        Pe parcursul paginii am folosit mai multe tag-uri HTML pentru a marca
+        sensul textului:
+    </p>
+    <ul>
+        <li><code>&lt;strong&gt;</code> — pentru cuvintele importante
+        (concepte, ani, nume).</li>
+        <li><code>&lt;em&gt;</code> — pentru termenii care trebuie evidențiați
+        cu italic (titluri de cărți, expresii străine).</li>
+        <li><code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>,
+        <code>&lt;td&gt;</code> — pentru tabelul de informații.</li>
+        <li><code>&lt;div class="..."&gt;</code> — pentru cutiile speciale
+        (concept, etapă), care primesc stiluri din stil.css.</li>
+    </ul>
+</div>
+
+<!-- ================================================================== -->
+<!-- 3. PAGINA DE APLICATII - intro + captura                           -->
+<!-- ================================================================== -->
+<div class="sectiune">
+    <h1>3. Pagina de aplicații — atractii.html</h1>
+    <p>
+        A doua pagină a site-ului prezintă <strong>aplicațiile practice</strong>
+        ale teoriei lui Pavlov, o galerie foto, alte experimente celebre care
+        au pornit de la descoperirea lui și o serie de curiozități. Scopul ei
+        este să arate că teoria din 1900 nu e doar o curiozitate de manual, ci
+        se folosește concret și astăzi. Pagina folosește <em>același fișier
+        de stil</em> (<code>stil.css</code>) ca prima, ceea ce face site-ul
+        unitar ca aspect.
+    </p>
+    <div class="captura-pereche">
+        <img src="capturi/atractii_half1.png" alt="Pagina de aplicatii - jumatatea de sus">
+        <img src="capturi/atractii_half2.png" alt="Pagina de aplicatii - jumatatea de jos">
+    </div>
+    <div class="legenda">Pagina de aplicații și curiozități (atractii.html)</div>
+</div>
+
+<!-- 3.1 — codul -->
+<div class="cod-pagina">
+    <h1>3.1. Codul sursă — atractii.html</h1>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;!-- A doua pagina a site-ului: aplicatii moderne, galerie si curiozitati --&gt;
+&lt;html lang=&quot;ro&quot;&gt;
+&lt;head&gt;
+    &lt;!-- Codificare UTF-8 pentru diacritice --&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+
+    &lt;!-- Setare pentru telefoane --&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+
+    &lt;!-- Titlul tab-ului --&gt;
+    &lt;title&gt;Aplicații și curiozități - Experimentul lui Pavlov&lt;/title&gt;
+
+    &lt;!-- Acelasi fisier de stil ca prima pagina --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;stil.css&quot;&gt;
+
+    &lt;!-- Imagine de fundal pentru antet (specifica acestei pagini) --&gt;
+    &lt;!-- Folosim imaginea cu Pavlov si echipa sa, din laborator --&gt;
+    &lt;style&gt;
+        header {
+            background-image: linear-gradient(rgba(31, 58, 95, 0.7), rgba(31, 58, 95, 0.7)),
+                              url(&#x27;https://girardmeister.com/wp-content/uploads/2014/11/Ivan.jpg&#x27;);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;!-- ANTETUL paginii --&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Aplicații și Curiozități&lt;/h1&gt;
+        &lt;p&gt;Cum se folosește astăzi descoperirea lui Pavlov&lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;!-- MENIU DE NAVIGARE --&gt;
+    &lt;!-- &quot;activ&quot; este pe a doua pagina pentru ca aici suntem --&gt;
+    &lt;nav&gt;
+        &lt;a href=&quot;index.html&quot;&gt;Acasă&lt;/a&gt;
+        &lt;a href=&quot;atractii.html&quot; class=&quot;activ&quot;&gt;Aplicații &amp; Curiozități&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- CONTINUTUL PRINCIPAL --&gt;
+    &lt;main&gt;
+
+        &lt;!-- Sectiunea 1: Aplicatii moderne ale teoriei --&gt;
+        &lt;section id=&quot;aplicatii&quot;&gt;
+            &lt;h2&gt;Aplicații moderne&lt;/h2&gt;
+            &lt;p&gt;
+                Deși a fost descoperită cu peste 100 de ani în urmă pe câini,
+                condiționarea clasică explică multe comportamente întâlnite
+                zilnic la oameni și este folosită activ în mai multe domenii:
+            &lt;/p&gt;
+
+            &lt;!-- Fiecare aplicatie are un mic subtitlu si un paragraf descriptiv --&gt;
+            &lt;h3&gt;Psihoterapie — tratarea fobiilor&lt;/h3&gt;
+            &lt;p&gt;
+                Tehnica numită &lt;strong&gt;desensibilizare sistematică&lt;/strong&gt;,
+                dezvoltată de psihologul Joseph Wolpe, folosește principiile
+                lui Pavlov &quot;în sens invers&quot;: pacientul este expus treptat la
+                ceea ce îl sperie (păianjeni, înălțime, avion), învățând să
+                asocieze acel stimul cu relaxarea, în loc de frică.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Publicitate și marketing&lt;/h3&gt;
+            &lt;p&gt;
+                Reclamele asociază produsele cu imagini plăcute (oameni
+                fericiți, peisaje frumoase, muzică emoționantă). După mai
+                multe expuneri, simpla vedere a produsului declanșează la
+                consumator o emoție pozitivă — exact ca salivația câinelui
+                la sunetul clopoțelului.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Educație și învățare&lt;/h3&gt;
+            &lt;p&gt;
+                Sunetul clopoțelului de la școală a devenit, prin condiționare,
+                un semnal care anunță automat începutul sau sfârșitul orei.
+                La fel, lauda profesorului asociată cu un răspuns corect îi
+                stimulează pe elevi să se implice mai mult.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Dresajul animalelor&lt;/h3&gt;
+            &lt;p&gt;
+                Antrenorii folosesc &lt;strong&gt;clicker training&lt;/strong&gt;: sunetul
+                unui mic dispozitiv (clicker) este asociat repetat cu o
+                recompensă, până devine el însuși un semnal pozitiv. Câinele,
+                pisica sau delfinul învață astfel mult mai repede comenzi noi.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Medicină — tratarea dependențelor&lt;/h3&gt;
+            &lt;p&gt;
+                În unele terapii de tratare a alcoolismului, băutura este
+                asociată cu un medicament care provoacă greață. După mai multe
+                asocieri, doar gândul la alcool poate produce dezgust — un
+                răspuns condiționat folosit în scop terapeutic.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Tehnologie și interfețe&lt;/h3&gt;
+            &lt;p&gt;
+                Notificările telefonului (sunete sau vibrații) declanșează la
+                utilizator un răspuns aproape automat: să scoată telefonul
+                imediat. Companiile cunosc acest efect și îl folosesc pentru
+                a menține atenția utilizatorului.
+            &lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Sectiunea 2: Galerie cu mai multe imagini --&gt;
+        &lt;!-- Imaginile sunt incarcate de pe Wikimedia Commons (sursa libera) --&gt;
+        &lt;section id=&quot;galerie&quot;&gt;
+            &lt;h2&gt;Galerie foto&lt;/h2&gt;
+            &lt;div class=&quot;galerie&quot;&gt;
+
+                &lt;!-- Fiecare &lt;figure&gt; contine o poza si o legenda --&gt;
+                &lt;figure&gt;
+                    &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ivan_Pavlov_NLM3.jpg/500px-Ivan_Pavlov_NLM3.jpg&quot;
+                         alt=&quot;Portretul lui Ivan Pavlov&quot;&gt;
+                    &lt;figcaption&gt;Ivan Petrovici Pavlov&lt;/figcaption&gt;
+                &lt;/figure&gt;
+
+                &lt;figure&gt;
+                    &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Ivan_Pavlov_research_on_dog%27s_reflex_setup.jpg/500px-Ivan_Pavlov_research_on_dog%27s_reflex_setup.jpg&quot;
+                         alt=&quot;Pavlov in laborator cu un caine&quot;&gt;
+                    &lt;figcaption&gt;Montajul experimental al lui Pavlov&lt;/figcaption&gt;
+                &lt;/figure&gt;
+
+                &lt;figure&gt;
+                    &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Classical_Conditioning.svg/500px-Classical_Conditioning.svg.png&quot;
+                         alt=&quot;Schema condiționării clasice&quot;&gt;
+                    &lt;figcaption&gt;Schema clasică a condiționării&lt;/figcaption&gt;
+                &lt;/figure&gt;
+
+                &lt;figure&gt;
+                    &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/One_of_Pavlov%27s_dogs.jpg/500px-One_of_Pavlov%27s_dogs.jpg&quot;
+                         alt=&quot;Unul dintre cainii lui Pavlov&quot;&gt;
+                    &lt;figcaption&gt;Unul dintre câinii lui Pavlov&lt;/figcaption&gt;
+                &lt;/figure&gt;
+
+                &lt;figure&gt;
+                    &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Nesterov-Pavlov.jpg/500px-Nesterov-Pavlov.jpg&quot;
+                         alt=&quot;Portret pictat al lui Pavlov de Nesterov&quot;&gt;
+                    &lt;figcaption&gt;Portret de Nesterov (1935)&lt;/figcaption&gt;
+                &lt;/figure&gt;
+
+                &lt;figure&gt;
+                    &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/RUSMARKA-3335.jpg/500px-RUSMARKA-3335.jpg&quot;
+                         alt=&quot;Timbru postal cu Ivan Pavlov&quot;&gt;
+                    &lt;figcaption&gt;Timbru rusesc cu Pavlov&lt;/figcaption&gt;
+                &lt;/figure&gt;
+
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Sectiunea 3: Experimente celebre derivate --&gt;
+        &lt;section id=&quot;experimente&quot;&gt;
+            &lt;h2&gt;Experimente celebre care au continuat ideea&lt;/h2&gt;
+            &lt;p&gt;
+                Descoperirile lui Pavlov au deschis drumul mai multor cercetări
+                celebre din secolul XX, care au confirmat și extins teoria
+                condiționării.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Micul Albert (John B. Watson, 1920)&lt;/h3&gt;
+            &lt;p&gt;
+                Watson a demonstrat că și emoțiile umane pot fi condiționate.
+                Un copil de 9 luni (numit &quot;Albert&quot;) a fost învățat să se teamă
+                de un șobolan alb, prin asocierea repetată a animalului cu un
+                zgomot puternic. Ulterior, copilul s-a temut și de blana albă
+                în general (generalizare).
+            &lt;/p&gt;
+
+            &lt;h3&gt;Cutia lui Skinner (B. F. Skinner, anii 1930)&lt;/h3&gt;
+            &lt;p&gt;
+                Pornind de la Pavlov, Skinner a dezvoltat
+                &lt;strong&gt;condiționarea operantă&lt;/strong&gt;: un șobolan apasă o
+                pârghie și primește mâncare ca recompensă. Comportamentul
+                voluntar al animalului se modifică în funcție de consecințele
+                pozitive sau negative.
+            &lt;/p&gt;
+
+            &lt;h3&gt;Câinii lui Seligman (1967)&lt;/h3&gt;
+            &lt;p&gt;
+                Pornind tot de la principiile pavloviene, Martin Seligman a
+                descoperit fenomenul de &lt;em&gt;&quot;neputință învățată&quot;&lt;/em&gt;: dacă
+                un animal este pus în repetate rânduri într-o situație din
+                care nu poate scăpa, ajunge să nu mai încerce să scape nici
+                atunci când are posibilitatea.
+            &lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Sectiunea 4: Curiozitati --&gt;
+        &lt;section id=&quot;curiozitati&quot;&gt;
+            &lt;h2&gt;Curiozități despre experiment&lt;/h2&gt;
+
+            &lt;!-- Folosim cutii &quot;.curiozitate&quot; pentru a evidentia fiecare fapt --&gt;
+            &lt;div class=&quot;curiozitate&quot;&gt;
+                &lt;strong&gt;Pavlov nu căuta condiționarea:&lt;/strong&gt; el studia, de
+                fapt, digestia. Reflexele condiționate au fost o descoperire
+                accidentală, observată întâmplător în timpul măsurătorilor
+                cantității de salivă.
+            &lt;/div&gt;
+
+            &lt;div class=&quot;curiozitate&quot;&gt;
+                &lt;strong&gt;Nu un clopoțel, ci un metronom:&lt;/strong&gt; contrar
+                imaginii populare, în experimentele originale Pavlov a folosit
+                cel mai des un &lt;em&gt;metronom&lt;/em&gt;, un fluier sau o lumină —
+                nu un clopoțel.
+            &lt;/div&gt;
+
+            &lt;div class=&quot;curiozitate&quot;&gt;
+                &lt;strong&gt;Saliva era colectată chirurgical:&lt;/strong&gt; pentru a o
+                putea măsura precis, Pavlov le făcea câinilor o mică incizie
+                în obraz, prin care saliva era dirijată într-un recipient
+                exterior. Așa se obținea o cantitate exactă, în mililitri.
+            &lt;/div&gt;
+
+            &lt;div class=&quot;curiozitate&quot;&gt;
+                &lt;strong&gt;Câinii aveau nume:&lt;/strong&gt; animalele de laborator nu
+                erau anonime — fiecare avea un nume (Druzhok, Mirta, Beck etc.)
+                și un dosar individual cu observații despre comportament.
+            &lt;/div&gt;
+
+            &lt;div class=&quot;curiozitate&quot;&gt;
+                &lt;strong&gt;&quot;Câinele lui Pavlov&quot; în limbaj:&lt;/strong&gt; expresia a
+                intrat în vorbirea curentă pentru a descrie pe cineva care
+                reacționează automat, mecanic, fără să gândească — la fel ca
+                animalul condiționat.
+            &lt;/div&gt;
+
+            &lt;div class=&quot;curiozitate&quot;&gt;
+                &lt;strong&gt;Inundația din 1924:&lt;/strong&gt; în timpul unei inundații
+                la Leningrad, câinii din laborator au fost aproape înecați.
+                După salvare, mulți au &quot;uitat&quot; reflexele învățate — Pavlov a
+                folosit episodul pentru a studia efectul stresului asupra
+                condiționării.
+            &lt;/div&gt;
+
+            &lt;div class=&quot;curiozitate&quot;&gt;
+                &lt;strong&gt;Influență culturală:&lt;/strong&gt; experimentul apare în
+                cărți, filme și seriale (de exemplu &lt;em&gt;Brave New World&lt;/em&gt;
+                de Aldous Huxley, &lt;em&gt;The Office&lt;/em&gt; sau
+                &lt;em&gt;The Big Bang Theory&lt;/em&gt;), fiind unul dintre cele mai
+                cunoscute experimente din toată psihologia.
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+    &lt;/main&gt;
+
+    &lt;!-- SUBSOLUL paginii --&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Proiect școlar — Experimentul lui Pavlov&lt;/p&gt;
+        &lt;p&gt;Surse: Wikipedia, Wikimedia Commons&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</div>
+
+<!-- 3.2 — explicatia -->
+<div class="sectiune">
+    <h1>3.2. Explicația codului — atractii.html</h1>
+
+    <h2>Diferențe față de prima pagină</h2>
+    <p>
+        Structura generală este foarte asemănătoare cu cea de la
+        <code>index.html</code>: aceleași elemente semantice
+        (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+        <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>) și același fișier
+        de stil. Sunt totuși câteva diferențe:
+    </p>
+    <ul>
+        <li>Imaginea de fundal a antetului este alta — una cu Pavlov în
+        laborator —, setată tot printr-un bloc <code>&lt;style&gt;</code> în
+        <code>&lt;head&gt;</code>.</li>
+        <li>În meniul de navigare, clasa <code>activ</code> este pe link-ul
+        "Aplicații &amp; Curiozități", pentru că aceea este pagina curentă.</li>
+        <li>Conținutul este complet diferit: aplicații, galerie, experimente
+        derivate, curiozități.</li>
+    </ul>
+
+    <h2>Secțiunile paginii</h2>
+    <ol>
+        <li><strong>"Aplicații moderne"</strong> — șase domenii în care se
+        folosește astăzi condiționarea clasică: psihoterapie, publicitate,
+        educație, dresaj, medicină, tehnologie. Fiecare are un subtitlu
+        <code>&lt;h3&gt;</code> și un paragraf descriptiv.</li>
+        <li><strong>"Galerie foto"</strong> — șase imagini relevante (Pavlov,
+        laborator, schema condiționării, câinii, portret pictat, timbru), puse
+        într-un <em>grid</em> CSS care se adaptează automat la lățimea
+        ecranului.</li>
+        <li><strong>"Experimente celebre care au continuat ideea"</strong> —
+        prezintă trei experimente derivate: Micul Albert (Watson),
+        Cutia lui Skinner, Câinii lui Seligman.</li>
+        <li><strong>"Curiozități despre experiment"</strong> — șapte fapte
+        mai puțin cunoscute, fiecare pus într-o cutie cu clasa
+        <code>.curiozitate</code> (fundal cald, bară laterală chihlimbar).</li>
+    </ol>
+
+    <h2>Galeria de imagini</h2>
+    <p>
+        Galeria este construită cu un <code>&lt;div class="galerie"&gt;</code>
+        care conține mai multe elemente <code>&lt;figure&gt;</code>. Fiecare
+        <code>&lt;figure&gt;</code> are o imagine
+        (<code>&lt;img src="..."&gt;</code>) și o legendă
+        (<code>&lt;figcaption&gt;</code>). Aspectul (mai multe coloane,
+        același raport) este dat de regulile din <code>stil.css</code>, pe care
+        le voi explica în capitolul următor.
+    </p>
+    <p>
+        Imaginile sunt încărcate de pe <strong>Wikimedia Commons</strong> și
+        două surse externe (toate cu licență liberă), ceea ce înseamnă că nu
+        trebuie ținute local — se descarcă automat când vizitatorul deschide
+        pagina.
+    </p>
+
+    <h2>Atribute de accesibilitate</h2>
+    <p>
+        Fiecare imagine are atributul <code>alt</code> cu o descriere a
+        conținutului. Acest text apare în locul imaginii dacă aceasta nu se
+        încarcă și este citit de programele pentru persoanele cu deficiențe
+        de vedere.
+    </p>
+</div>
+
+<!-- ================================================================== -->
+<!-- 4. STIL.CSS                                                        -->
+<!-- ================================================================== -->
+<div class="sectiune">
+    <h1>4. Fișierul de stil — stil.css</h1>
+    <p>
+        Acest fișier conține <strong>toate regulile de stilizare</strong>
+        aplicate site-ului. Este folosit de ambele pagini HTML, ceea ce
+        înseamnă că o singură modificare aici se aplică automat pe tot site-ul.
+        Această separare între structură (HTML) și aspect (CSS) este una
+        dintre regulile de bază ale dezvoltării web moderne.
+    </p>
+</div>
+
+<!-- 4.1 — codul -->
+<div class="cod-pagina">
+    <h1>4.1. Codul sursă — stil.css</h1>
+    <pre><code>/* =====================================================
+   Fisier de stil partajat de ambele pagini ale site-ului
+   Tema: Experimentul lui Pavlov
+   ===================================================== */
+
+/* Resetam marginile implicite ale browserului */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stil general pentru intreaga pagina */
+body {
+    /* Fonturi sans-serif moderne, potrivite pentru un text stiintific */
+    font-family: &quot;Helvetica Neue&quot;, Arial, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50; /* gri-albastru inchis, mai bland decat negrul */
+    background-color: #f4f6f8; /* gri foarte deschis, ca o foaie de laborator */
+}
+
+/* Antetul paginii - imaginea mare de sus cu titlul */
+header {
+    /* Imaginea de fundal este setata in fiecare pagina (este diferita) */
+    background-size: contain; /* aspect fit: pastram intreaga imagine, fara taiere */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #1f3a5f; /* aceeasi culoare ca a gradientului, pentru zonele goale */
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+/* Titlul principal al paginii */
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+/* Subtitlul de sub titlu */
+header p {
+    font-size: 1.3em;
+    font-style: italic;
+    opacity: 0.95;
+}
+
+/* Bara de navigare cu link-uri catre pagini */
+nav {
+    background-color: #1f3a5f; /* albastru inchis academic */
+    padding: 15px;
+    text-align: center;
+    position: sticky; /* ramane lipita sus cand dam scroll */
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Link-urile din meniu */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+/* Cand trecem mouse-ul peste un link */
+nav a:hover {
+    color: #e8a93b; /* accent cald: chihlimbar */
+}
+
+/* Link-ul paginii curente este evidentiat */
+nav a.activ {
+    color: #e8a93b;
+    border-bottom: 2px solid #e8a93b;
+}
+
+/* Containerul principal pentru continut */
+main {
+    max-width: 1000px;
+    margin: 30px auto; /* centram pe orizontala */
+    padding: 0 20px;
+}
+
+/* Fiecare sectiune din pagina */
+section {
+    background-color: white;
+    margin-bottom: 30px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Titlurile sectiunilor */
+section h2 {
+    color: #1f3a5f;
+    border-bottom: 2px solid #1f3a5f;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Subtitluri (h3) folosite in sectiuni */
+section h3 {
+    color: #2c5d8f; /* nuanta de albastru putin mai deschisa */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Paragrafele primesc spatiu sub ele */
+section p {
+    margin-bottom: 15px;
+    text-align: justify; /* aliniere pe ambele parti */
+}
+
+/* Galeria de imagini - folosim grid pentru a aseza pozele frumos */
+.galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Fiecare poza din galerie */
+.galerie figure {
+    text-align: center;
+}
+
+.galerie img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* taie imaginea ca sa incapa fara distorsiune */
+    border-radius: 5px;
+    /* O tranzitie ca sa avem un efect lin la hover */
+    transition: transform 0.3s;
+}
+
+/* Cand trecem mouse-ul peste poza, se mareste putin */
+.galerie img:hover {
+    transform: scale(1.05);
+}
+
+/* Textul de sub fiecare poza */
+.galerie figcaption {
+    margin-top: 8px;
+    font-style: italic;
+    color: #555;
+}
+
+/* Listele cu marcatori */
+ul {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+/* Fiecare element din lista are un mic spatiu intre ele */
+ul li {
+    margin-bottom: 8px;
+}
+
+/* Tabelul cu informatii */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+/* Celulele tabelului */
+table td, table th {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Antet de tabel - albastru academic */
+table th {
+    background-color: #1f3a5f;
+    color: white;
+}
+
+/* Prima coloana (cand nu avem antet) este ingrosata */
+table td:first-child {
+    font-weight: bold;
+}
+
+/* Cutie speciala pentru curiozitati - se evidentiaza fata de text */
+.curiozitate {
+    background-color: #fff7e6; /* crem cald */
+    border-left: 4px solid #e8a93b; /* chihlimbar */
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+/* Cutie pentru concepte cheie / definitii */
+.concept {
+    background-color: #eaf2fb; /* bleu pal */
+    border-left: 4px solid #2c5d8f;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+/* Etapele experimentului - lista numerotata, evidentiata */
+.etapa {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-left: 4px solid #1f3a5f;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.etapa h4 {
+    color: #1f3a5f;
+    margin-bottom: 8px;
+}
+
+/* Subsolul paginii */
+footer {
+    background-color: #1f3a5f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* Reguli pentru ecrane mici (telefoane) */
+@media (max-width: 600px) {
     header h1 {
         font-size: 2em;
     }
@@ -516,108 +1267,183 @@
         display: block;
         margin: 5px 0;
     }
-}</pre>
-        <p>
-            Pe telefoane, link-urile din meniu sunt așezate unul sub altul,
-            iar titlul antetului devine mai mic, pentru a încăpea bine pe ecran.
-        </p>
+}
+</code></pre>
+</div>
 
-        <h2>5.4. Galeria de imagini</h2>
-        <p>
-            Galeria foto folosește <strong>CSS Grid</strong>, care aranjează
-            automat imaginile într-un număr potrivit de coloane, în funcție
-            de lățimea ecranului:
-        </p>
-        <pre>.galerie {
+<!-- 4.2 — explicatia -->
+<div class="sectiune">
+    <h1>4.2. Explicația codului — stil.css</h1>
+
+    <h2>Resetul inițial și stilurile generale</h2>
+    <p>
+        Selectorul <code>*</code> de la începutul fișierului anulează
+        marginile și padding-ul implicite ale browserului și activează
+        <code>box-sizing: border-box</code>, astfel încât dimensiunile
+        elementelor să fie ușor de calculat.
+    </p>
+    <p>
+        Pe <code>body</code> sunt setate fontul (Helvetica Neue, sans-serif —
+        un font modern, potrivit pentru un text științific), culoarea
+        textului și culoarea de fundal a paginii (un gri foarte deschis, ca
+        o foaie de laborator).
+    </p>
+
+    <h2>Paleta de culori</h2>
+    <p>
+        Am ales o paletă inspirată din mediul academic / științific, cu un
+        accent cald pentru cutiile de curiozități:
+    </p>
+    <table>
+        <tr>
+            <th>Culoare</th>
+            <th>Cod hex</th>
+            <th>Utilizare</th>
+        </tr>
+        <tr>
+            <td>Albastru închis</td>
+            <td>#1f3a5f</td>
+            <td>meniu, titluri, subsol, antet de tabel</td>
+        </tr>
+        <tr>
+            <td>Albastru mediu</td>
+            <td>#2c5d8f</td>
+            <td>subtitluri (h3), bara cutiei „concept"</td>
+        </tr>
+        <tr>
+            <td>Chihlimbar</td>
+            <td>#e8a93b</td>
+            <td>accent cald, link-ul activ, cutia „curiozitate"</td>
+        </tr>
+        <tr>
+            <td>Gri-deschis</td>
+            <td>#f4f6f8</td>
+            <td>fundalul paginii</td>
+        </tr>
+        <tr>
+            <td>Bleu pal</td>
+            <td>#eaf2fb</td>
+            <td>fundalul cutiei „concept"</td>
+        </tr>
+        <tr>
+            <td>Crem cald</td>
+            <td>#fff7e6</td>
+            <td>fundalul cutiei „curiozitate"</td>
+        </tr>
+    </table>
+
+    <h2>Antetul și navigarea</h2>
+    <p>
+        <code>header</code> are <code>background-size: contain</code>, ceea ce
+        înseamnă <em>aspect fit</em>: imaginea se încadrează întreagă, fără
+        a fi tăiată. Spațiul rămas este umplut cu albastru închis. Peste imagine
+        e un gradient semitransparent (setat în fiecare pagină separat) care
+        întunecă imaginea, ca textul alb să fie lizibil.
+    </p>
+    <p>
+        <code>nav</code> are <code>position: sticky; top: 0</code>, ceea ce face
+        ca meniul să rămână lipit sus când utilizatorul derulează pagina —
+        astfel link-urile sunt mereu la îndemână.
+    </p>
+
+    <h2>Cutii speciale: .concept, .etapa, .curiozitate</h2>
+    <p>
+        Trei tipuri de cutii cu fundal colorat și o bară laterală groasă pe
+        stânga (<code>border-left</code>) sunt folosite pentru a evidenția
+        anumite tipuri de conținut:
+    </p>
+    <ul>
+        <li><code>.concept</code> — bleu pal, pentru definițiile termenilor;</li>
+        <li><code>.etapa</code> — gri foarte deschis, pentru pașii
+        experimentului;</li>
+        <li><code>.curiozitate</code> — crem cald, pentru fapte interesante.</li>
+    </ul>
+
+    <h2>Galeria — CSS Grid</h2>
+    <p>
+        Galeria foto folosește <strong>CSS Grid</strong>, care aranjează
+        automat imaginile într-un număr potrivit de coloane, în funcție
+        de lățimea ecranului:
+    </p>
+    <pre>.galerie {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
 }</pre>
-        <p>
-            Funcția <code>repeat(auto-fit, minmax(250px, 1fr))</code> înseamnă:
-            "umple linia cu cât mai multe coloane care au cel puțin 250px lățime".
-            Astfel, pe un ecran lat vom vedea 4 imagini pe rând, iar pe telefon
-            doar una sau două.
-        </p>
-        <p>Imaginile au și un efect de mărire la <em>hover</em>:</p>
-        <pre>.galerie img:hover {
-    transform: scale(1.05);
-}</pre>
-        <p>
-            Imaginile folosite sunt preluate de pe <strong>Wikimedia Commons</strong>,
-            sursă liberă de imagini cu licență Creative Commons.
-        </p>
-    </div>
+    <p>
+        Funcția <code>repeat(auto-fit, minmax(250px, 1fr))</code> înseamnă:
+        „umple linia cu cât mai multe coloane care au cel puțin 250px lățime".
+        Astfel, pe un ecran lat vom vedea 4 imagini pe rând, iar pe telefon
+        doar una sau două. Imaginile au și un mic efect de mărire la
+        <em>hover</em>.
+    </p>
 
-    <!-- CAPITOLUL 6: MOD DE UTILIZARE -->
-    <div class="capitol">
-        <h1>6. Mod de utilizare</h1>
-        <p>
-            Pentru a rula proiectul nu este nevoie de niciun program special —
-            doar de un browser web (Google Chrome, Firefox, Safari, Edge etc.).
-        </p>
-        <p>Pașii de utilizare:</p>
-        <ol>
-            <li>Se deschide folderul <code>prezentare-roma</code>.</li>
-            <li>Se face dublu-click pe fișierul <code>index.html</code>.</li>
-            <li>Pagina se va deschide automat în browserul implicit.</li>
-            <li>Se folosește meniul de sus pentru a naviga între cele două pagini.</li>
-        </ol>
-        <p>
-            Fiind realizat doar cu HTML și CSS, site-ul <strong>nu necesită
-            conexiune la internet</strong>, cu excepția afișării imaginilor
-            (care sunt încărcate de pe Wikimedia Commons).
-        </p>
-    </div>
+    <h2>Design responsive</h2>
+    <p>
+        La sfârșitul fișierului există un bloc <code>@media (max-width: 600px)</code>
+        care se activează doar pe ecranele mici (telefoane). Acolo titlul
+        antetului devine mai mic, iar link-urile din meniu se așază unul sub
+        altul (în loc să fie aliniate pe orizontală), ca să încapă bine.
+    </p>
+</div>
 
-    <!-- CAPITOLUL 7: CONCLUZII -->
-    <div class="capitol">
-        <h1>7. Concluzii</h1>
-        <p>
-            Realizarea acestui proiect a fost o experiență utilă din mai multe
-            puncte de vedere:
-        </p>
-        <ul>
-            <li>Mi-a permis să aplic în practică cunoștințele de
-            <strong>HTML</strong> și <strong>CSS</strong> acumulate în orele
-            de informatică.</li>
-            <li>Am învățat să organizez informația într-un mod clar, atât pentru
-            utilizator (prin secțiuni și meniu), cât și pentru programator
-            (prin separarea HTML-ului de CSS).</li>
-            <li>Am descoperit conceptul de <strong>design responsive</strong>,
-            foarte important în prezent, când majoritatea oamenilor folosesc
-            telefonul pentru a accesa internetul.</li>
-            <li>Am exersat scrierea unui cod <strong>curat și comentat</strong>,
-            care poate fi înțeles ușor și de o altă persoană.</li>
-        </ul>
-        <p>Pe viitor, proiectul ar putea fi îmbunătățit prin:</p>
-        <ul>
-            <li>adăugarea unei pagini de <strong>contact</strong> sau a
-            <strong>hărții</strong> orașului;</li>
-            <li>folosirea <strong>JavaScript</strong> pentru a adăuga
-            interactivitate (de exemplu, un slider de imagini sau un quiz
-            despre Roma);</li>
-            <li>traducerea site-ului și în alte limbi (engleză, italiană).</li>
-        </ul>
-    </div>
+<!-- ================================================================== -->
+<!-- 5. CONCLUZII                                                       -->
+<!-- ================================================================== -->
+<div class="sectiune">
+    <h1>5. Concluzii</h1>
+    <p>
+        Realizarea acestui proiect a fost o experiență utilă din mai multe
+        puncte de vedere:
+    </p>
+    <ul>
+        <li>Mi-a permis să aplic în practică cunoștințele de
+        <strong>HTML</strong> și <strong>CSS</strong> acumulate în orele
+        de informatică.</li>
+        <li>Am învățat să separ structura (HTML) de aspect (CSS), folosind un
+        singur fișier de stil pentru ambele pagini — ceea ce face mai ușor
+        de întreținut un site.</li>
+        <li>Am descoperit conceptul de <strong>design responsive</strong> și
+        am exersat <em>media queries</em>, foarte importante astăzi, când
+        majoritatea oamenilor folosesc telefonul pentru a accesa internetul.</li>
+        <li>Am exersat folosirea elementelor <strong>semantice</strong> din
+        HTML5 (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+        <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>,
+        <code>&lt;footer&gt;</code>), care fac codul mai clar și mai accesibil.</li>
+        <li>Tema mi-a permis să aprofundez și un subiect interesant din
+        <strong>psihologie</strong> — experimentul lui Pavlov și implicațiile
+        lui în viața de zi cu zi.</li>
+    </ul>
+    <p>Pe viitor, proiectul ar putea fi îmbunătățit prin:</p>
+    <ul>
+        <li>adăugarea unei pagini de <strong>quiz</strong> care să verifice
+        înțelegerea conceptelor (cu JavaScript);</li>
+        <li>integrarea unei <strong>animații</strong> care să arate vizual
+        cele trei etape ale experimentului;</li>
+        <li>traducerea site-ului și în alte limbi (engleză, franceză).</li>
+    </ul>
+</div>
 
-    <!-- CAPITOLUL 8: BIBLIOGRAFIE -->
-    <div class="capitol">
-        <h1>8. Bibliografie</h1>
-        <ol>
-            <li><strong>Wikipedia</strong> — articolul despre Roma:<br>
-            https://ro.wikipedia.org/wiki/Roma</li>
-            <li><strong>Wikipedia</strong> — articolul în limba engleză despre Rome:<br>
-            https://en.wikipedia.org/wiki/Rome</li>
-            <li><strong>Wikimedia Commons</strong> — sursa imaginilor folosite:<br>
-            https://commons.wikimedia.org/wiki/Rome</li>
-            <li><strong>MDN Web Docs</strong> — documentația oficială pentru HTML și CSS:<br>
-            https://developer.mozilla.org/</li>
-            <li><strong>W3Schools</strong> — tutoriale HTML și CSS:<br>
-            https://www.w3schools.com/</li>
-            <li>Manualul de Informatică pentru clasa a XII-a.</li>
-        </ol>
-    </div>
+<!-- ================================================================== -->
+<!-- 6. BIBLIOGRAFIE                                                    -->
+<!-- ================================================================== -->
+<div class="sectiune">
+    <h1>6. Bibliografie</h1>
+    <ol>
+        <li><strong>Wikipedia</strong> — articolul despre Ivan Pavlov:<br>
+        https://ro.wikipedia.org/wiki/Ivan_Pavlov</li>
+        <li><strong>Wikipedia</strong> — Classical conditioning (engleză):<br>
+        https://en.wikipedia.org/wiki/Classical_conditioning</li>
+        <li><strong>Wikimedia Commons</strong> — sursa imaginilor folosite:<br>
+        https://commons.wikimedia.org/</li>
+        <li><strong>MDN Web Docs</strong> — documentația oficială pentru HTML și CSS:<br>
+        https://developer.mozilla.org/</li>
+        <li><strong>W3Schools</strong> — tutoriale HTML și CSS:<br>
+        https://www.w3schools.com/</li>
+        <li>Manualul de Informatică pentru clasa a XII-a.</li>
+        <li>Manualul de Psihologie pentru clasa a X-a.</li>
+    </ol>
+</div>
 
 </body>
 </html>

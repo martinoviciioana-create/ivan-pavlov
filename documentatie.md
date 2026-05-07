@@ -4,7 +4,7 @@
 
 ---
 
-**Tema:** Prezentarea orașului Roma — pagină web
+**Tema:** Experimentul lui Pavlov — pagină web
 
 **Elev:** Martinovici Ioana Alexandra
 
@@ -21,235 +21,186 @@
 ## Cuprins
 
 1. Argument
-2. Descrierea proiectului
-3. Tehnologii folosite
-   - 3.1. HTML
-   - 3.2. CSS
-4. Structura aplicației
-   - 4.1. Organizarea fișierelor
-   - 4.2. Pagina principală (index.html)
-   - 4.3. Pagina de atracții (atractii.html)
-   - 4.4. Fișierul de stil (stil.css)
-5. Detalii de implementare
-   - 5.1. Structura HTML
-   - 5.2. Stilizare CSS
-   - 5.3. Design responsive
-   - 5.4. Galeria de imagini
-6. Mod de utilizare
-7. Concluzii
-8. Bibliografie
+2. Pagina principală — index.html
+   - 2.1. Codul sursă
+   - 2.2. Explicația codului
+3. Pagina de aplicații — atractii.html
+   - 3.1. Codul sursă
+   - 3.2. Explicația codului
+4. Fișierul de stil — stil.css
+   - 4.1. Codul sursă
+   - 4.2. Explicația codului
+5. Concluzii
+6. Bibliografie
 
 ---
 
 ## 1. Argument
 
-Am ales ca temă pentru lucrarea de atestat realizarea unei pagini web de
-prezentare a orașului Roma, capitala Italiei. Am ales acest subiect deoarece
-Roma este unul dintre cele mai importante orașe din istoria omenirii și are
-o legătură strânsă cu cultura românească — chiar și numele "România" provine
-de la cuvântul "roman".
+Am ales ca temă pentru lucrarea de atestat realizarea unui site web despre
+**experimentul lui Ivan Petrovici Pavlov**, unul dintre cele mai importante
+experimente din istoria psihologiei. Pavlov a descoperit, la sfârșitul
+secolului al XIX-lea, fenomenul numit *condiționare clasică* — felul în care
+un organism poate învăța să asocieze doi stimuli și să reacționeze la unul
+ca și cum ar fi celălalt.
 
-Realizarea unui site web mi-a permis să aplic cunoștințele de informatică
-acumulate în timpul liceului, în special cele legate de limbajele HTML și
-CSS, dar și să îmi dezvolt creativitatea prin alegerea culorilor, a imaginilor
-și a modului de organizare a informației.
+Tema mi s-a părut interesantă pentru că face legătura între **biologie**,
+**psihologie** și **comportament uman**: deși experimentul a fost făcut pe
+câini, principiile descoperite explică multe lucruri din viața noastră de
+zi cu zi — de la reclame, la teama de stomatolog sau la modul în care
+reacționăm la notificările telefonului.
 
-Proiectul îmbină astfel **tehnologia** cu **istoria** și **cultura**, fiind
-util atât din punct de vedere educațional, cât și informativ pentru orice
-persoană care dorește să afle mai multe despre Orașul Etern.
-
----
-
-## 2. Descrierea proiectului
-
-Proiectul constă într-un site web format din **două pagini HTML**, conectate
-între ele printr-un meniu de navigare. Site-ul prezintă orașul Roma sub
-diferite aspecte:
-
-- **Pagina principală** conține informații generale despre oraș, istoria
-  Romei împărțită pe perioade, geografia și clima, precum și un tabel cu
-  date utile.
-- **Pagina de atracții** prezintă cele mai cunoscute monumente ale Romei,
-  o galerie foto, bucătăria tradițională romană și diverse curiozități.
-
-Site-ul este realizat **integral în limba română** și folosește un design
-inspirat din culorile clasice ale Romei antice (roșu închis și auriu), cu
-o tipografie serif (Georgia) care amintește de inscripțiile romane.
+Realizarea unui site web mi-a permis să aplic cunoștințele de **HTML** și
+**CSS** învățate în orele de informatică. Site-ul este împărțit în două
+pagini: prima prezintă *teoria și experimentul*, iar a doua prezintă
+*aplicațiile moderne și curiozitățile*.
 
 ---
 
-## 3. Tehnologii folosite
+## 2. Pagina principală — index.html
 
-### 3.1. HTML (HyperText Markup Language)
+Această pagină este punctul de intrare în site și conține partea teoretică:
+cine a fost Pavlov, conceptele de bază ale condiționării clasice, etapele
+experimentului, alte procese descoperite, precum și un tabel cu informații
+rapide despre savant.
 
-HTML este limbajul standard folosit pentru crearea paginilor web. El
-definește **structura** unei pagini, prin elemente numite *tag-uri*
-(de exemplu: `<h1>`, `<p>`, `<img>`).
+![Pagina principală a site-ului (index.html)](capturi/index_full.png)
 
-Fiecare pagină a site-ului este un fișier `.html` care conține:
-- antetul `<head>` cu informații despre pagină (titlu, codificare)
-- corpul `<body>` cu conținutul vizibil de utilizator
+### 2.1. Codul sursă
 
-În proiectul meu am folosit **HTML5**, varianta modernă a limbajului, care
-introduce elemente semantice utile precum `<header>`, `<nav>`, `<main>`,
-`<section>` și `<footer>`.
+Codul complet este în fișierul `index.html` din proiect. Vezi versiunea
+HTML/PDF/DOCX a documentației pentru listingul integral.
 
-### 3.2. CSS (Cascading Style Sheets)
+### 2.2. Explicația codului
 
-CSS este limbajul folosit pentru a **stiliza** o pagină web — culori,
-fonturi, dimensiuni, poziționare etc. Practic, dacă HTML stabilește
-*ce* afișăm, CSS stabilește *cum arată* ceea ce afișăm.
+**Antetul documentului (head).** În secțiunea `<head>` sunt setate
+informațiile pe care browserul le folosește pentru afișare:
+- `<meta charset="UTF-8">` — codificarea de caractere, necesară pentru
+  diacritice (ă, â, î, ș, ț).
+- `<meta name="viewport">` — face pagina să arate bine și pe telefoane.
+- `<title>` — titlul tab-ului din browser.
+- `<link rel="stylesheet" href="stil.css">` — leagă pagina de fișierul cu
+  stiluri.
+- Un bloc `<style>` cu o regulă specifică acestei pagini, pentru imaginea
+  de fundal a antetului (portretul lui Pavlov).
 
-Am folosit un fișier CSS extern (`stil.css`) care este aplicat ambelor
-pagini. Avantajul acestei metode este că, dacă vreau să schimb un stil
-(de exemplu culoarea meniului), îl modific într-un singur loc și
-schimbarea apare automat pe toate paginile.
+**Structura semantică a corpului paginii.** Pagina folosește elemente
+**semantice** din HTML5, care descriu rolul fiecărei zone:
+- `<header>` — antetul mare cu titlul și subtitlul, peste imagine.
+- `<nav>` — bara de navigare. Link-ul paginii curente are clasa `activ`.
+- `<main>` — conținutul principal.
+- `<section>` — fiecare zonă tematică (despre, concepte, experiment, etc.).
+- `<footer>` — subsolul.
 
-În stilizarea proiectului am folosit:
-- **CSS Grid** — pentru afișarea galeriei de imagini
-- **Flexbox** și **box model** — pentru aranjarea elementelor
-- **Media queries** — pentru ca site-ul să arate bine și pe telefoane
-- **Pseudo-clase** (`:hover`) — pentru efecte la trecerea mouse-ului
-- **Tranziții** — pentru animații line
+**Secțiunile de conținut.** Pagina conține **cinci secțiuni**:
+1. *„Cine a fost Ivan Pavlov?"* — biografie scurtă, premiul Nobel din 1904,
+   legătura cu behaviorismul.
+2. *„Concepte cheie"* — cinci definiții esențiale (stimul / răspuns
+   necondiționat, neutru, condiționat). Fiecare e pusă într-o cutie cu
+   clasa `.concept`.
+3. *„Cum a decurs experimentul"* — cele trei etape (înainte / în timpul /
+   după condiționare), în cutii cu clasa `.etapa`.
+4. *„Procese descoperite de Pavlov"* — achiziția, extincția, recuperarea
+   spontană, generalizarea, discriminarea.
+5. *„Informații rapide"* — un tabel HTML cu date biografice.
 
----
-
-## 4. Structura aplicației
-
-### 4.1. Organizarea fișierelor
-
-Proiectul este compus din **3 fișiere** plasate în același folder:
-
-```
-prezentare-roma/
-├── index.html       (pagina principală)
-├── atractii.html    (pagina de atracții și cultură)
-└── stil.css         (fișierul cu stiluri, comun ambelor pagini)
-```
-
-### 4.2. Pagina principală (index.html)
-
-Pagina de start a site-ului conține următoarele secțiuni:
-
-1. **Antet** — un banner mare cu o imagine de fundal cu Colosseum-ul,
-   peste care apare titlul "Roma — Orașul Etern".
-2. **Meniu de navigare** — două butoane pentru a comuta între cele
-   două pagini ale site-ului.
-3. **Despre Roma** — informații generale: poziție geografică,
-   populație, supranume.
-4. **Istoria Romei** — prezentată cronologic în 5 perioade:
-   - Fondarea (753 î.Hr.)
-   - Republica Romană
-   - Imperiul Roman
-   - Roma papală
-   - Roma modernă
-5. **Geografie și climă** — cele 7 coline, râul Tibru, clima mediteraneană.
-6. **Tabel cu informații rapide** — date utile (populație, suprafață,
-   limbă, monedă etc.).
-7. **Subsol** — informații despre proiect și surse.
-
-### 4.3. Pagina de atracții (atractii.html)
-
-A doua pagină a site-ului are următoarele secțiuni:
-
-1. **Antet** — banner cu o imagine de fundal cu Fontana di Trevi.
-2. **Meniu de navigare** — identic cu prima pagină.
-3. **Atracții turistice** — descrieri detaliate pentru 9 monumente:
-   - Colosseum, Forul Roman, Vaticanul, Capela Sixtină,
-   - Fontana di Trevi, Panteonul, Piazza Navona,
-   - Treptele Spaniole, Castel Sant'Angelo.
-4. **Galerie foto** — 8 imagini ale celor mai importante monumente,
-   cu un efect de mărire la trecerea mouse-ului.
-5. **Bucătărie romană** — împărțită pe categorii: paste, preparate
-   tradiționale, deserturi.
-6. **Curiozități** — 7 fapte interesante, prezentate în cutii
-   evidențiate.
-7. **Subsol** — identic cu prima pagină.
-
-### 4.4. Fișierul de stil (stil.css)
-
-Acest fișier conține toate regulile de stilizare aplicate ambelor
-pagini. Principalele reguli definite sunt:
-
-- stiluri generale pentru `body`, `header`, `nav`, `main`, `footer`
-- stiluri pentru secțiuni și titluri
-- stiluri pentru galeria de imagini (grid + efect hover)
-- stiluri pentru tabel
-- stiluri pentru cutia de curiozități
-- reguli responsive pentru ecrane mici
+**Elemente de marcaj folosite.** Pe parcursul paginii am folosit:
+- `<strong>` — pentru cuvintele importante;
+- `<em>` — pentru italic (titluri de cărți, expresii străine);
+- `<table>`, `<tr>`, `<td>` — pentru tabelul de informații;
+- `<div class="...">` — pentru cutiile speciale (concept, etapă).
 
 ---
 
-## 5. Detalii de implementare
+## 3. Pagina de aplicații — atractii.html
 
-### 5.1. Structura HTML
+A doua pagină a site-ului prezintă **aplicațiile practice** ale teoriei lui
+Pavlov, o galerie foto, alte experimente celebre care au pornit de la
+descoperirea lui și o serie de curiozități. Folosește același fișier de
+stil ca prima pagină.
 
-Fiecare pagină HTML respectă structura standard:
+![Pagina de aplicații și curiozități (atractii.html)](capturi/atractii_full.png)
 
-```html
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roma - Orașul Etern</title>
-    <link rel="stylesheet" href="stil.css">
-</head>
-<body>
-    <header>...</header>
-    <nav>...</nav>
-    <main>
-        <section>...</section>
-        ...
-    </main>
-    <footer>...</footer>
-</body>
-</html>
-```
+### 3.1. Codul sursă
 
-Atributul `lang="ro"` indică faptul că pagina este în limba română, iar
-`<meta charset="UTF-8">` permite afișarea corectă a diacriticelor
-(ă, â, î, ș, ț).
+Codul complet este în fișierul `atractii.html`. Vezi versiunea HTML/PDF/DOCX
+a documentației pentru listingul integral.
 
-### 5.2. Stilizare CSS
+### 3.2. Explicația codului
 
-Pentru a obține un aspect plăcut, am folosit o paletă de culori
-inspirată din Roma antică:
+**Diferențe față de prima pagină.** Structura generală e foarte asemănătoare
+cu cea de la `index.html` (aceleași elemente semantice, același fișier de
+stil). Diferențele sunt:
+- imaginea de fundal a antetului — una cu Pavlov în laborator;
+- în meniu, clasa `activ` este pe link-ul „Aplicații & Curiozități";
+- conținutul este complet diferit (aplicații, galerie, experimente
+  derivate, curiozități).
 
-| Culoare | Cod hex   | Utilizare              |
-|---------|-----------|------------------------|
-| Roșu închis | `#8b0000` | meniul, titlurile, subsol |
-| Auriu | `#ffd700` | accente, link-uri active |
-| Crem | `#f9f5ec` | fundalul paginii |
-| Galben pal | `#fff8dc` | cutiile de curiozități |
+**Secțiunile paginii:**
+1. *„Aplicații moderne"* — șase domenii: psihoterapie, publicitate,
+   educație, dresaj, medicină, tehnologie.
+2. *„Galerie foto"* — șase imagini relevante puse într-un grid CSS care se
+   adaptează automat la lățimea ecranului.
+3. *„Experimente celebre care au continuat ideea"* — Micul Albert
+   (Watson), Cutia lui Skinner, Câinii lui Seligman.
+4. *„Curiozități despre experiment"* — șapte fapte mai puțin cunoscute, în
+   cutii cu clasa `.curiozitate`.
 
-Am folosit fontul **Georgia** (sau "Times New Roman" ca alternativă),
-un font cu serife care amintește de inscripțiile romane antice.
+**Galeria de imagini.** Construită cu un `<div class="galerie">` care
+conține mai multe `<figure>`. Fiecare figură are o imagine și o legendă
+(`<figcaption>`). Aspectul (mai multe coloane) e dat de regulile din
+`stil.css`.
 
-### 5.3. Design responsive
+**Atribute de accesibilitate.** Fiecare imagine are atributul `alt` cu
+descrierea conținutului. Acest text apare dacă imaginea nu se încarcă și
+e citit de cititoarele de ecran.
 
-Pentru ca site-ul să arate bine atât pe calculator, cât și pe telefon,
-am folosit *media queries*:
+---
 
-```css
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 2em;
-    }
-    nav a {
-        display: block;
-        margin: 5px 0;
-    }
-}
-```
+## 4. Fișierul de stil — stil.css
 
-Pe telefoane, link-urile din meniu sunt așezate unul sub altul, iar
-titlul antetului devine mai mic, pentru a încăpea bine pe ecran.
+Acest fișier conține toate regulile de stilizare aplicate site-ului. Este
+folosit de ambele pagini HTML, ceea ce înseamnă că o singură modificare
+aici se aplică automat pe tot site-ul.
 
-### 5.4. Galeria de imagini
+### 4.1. Codul sursă
 
-Galeria foto folosește **CSS Grid**, care aranjează automat imaginile
-într-un număr potrivit de coloane, în funcție de lățimea ecranului:
+Codul complet este în fișierul `stil.css`. Vezi versiunea HTML/PDF/DOCX
+a documentației pentru listingul integral.
+
+### 4.2. Explicația codului
+
+**Resetul inițial și stilurile generale.** Selectorul `*` anulează
+marginile și padding-ul implicite ale browserului și activează
+`box-sizing: border-box`. Pe `body` sunt setate fontul (Helvetica Neue,
+sans-serif), culoarea textului și culoarea de fundal a paginii.
+
+**Paleta de culori.** Inspirată din mediul academic / științific, cu un
+accent cald pentru cutiile de curiozități:
+
+| Culoare | Cod hex | Utilizare |
+|---------|---------|-----------|
+| Albastru închis | `#1f3a5f` | meniu, titluri, subsol, antet de tabel |
+| Albastru mediu | `#2c5d8f` | subtitluri (h3), bara cutiei „concept" |
+| Chihlimbar | `#e8a93b` | accent cald, link-ul activ, cutia „curiozitate" |
+| Gri-deschis | `#f4f6f8` | fundalul paginii |
+| Bleu pal | `#eaf2fb` | fundalul cutiei „concept" |
+| Crem cald | `#fff7e6` | fundalul cutiei „curiozitate" |
+
+**Antetul și navigarea.** `header` are `background-size: contain` (aspect
+fit — imaginea se vede întreagă, fără tăiere). Spațiul rămas e umplut cu
+albastru. Peste imagine e un gradient semitransparent care întunecă
+imaginea, ca textul alb să fie lizibil. `nav` are `position: sticky;
+top: 0`, deci meniul rămâne lipit sus când utilizatorul derulează pagina.
+
+**Cutii speciale.** Trei tipuri de cutii cu fundal colorat și o bară
+laterală groasă pe stânga (`border-left`):
+- `.concept` — bleu pal, pentru definițiile termenilor;
+- `.etapa` — gri foarte deschis, pentru pașii experimentului;
+- `.curiozitate` — crem cald, pentru fapte interesante.
+
+**Galeria — CSS Grid.** Galeria foto folosește **CSS Grid**, care
+aranjează automat imaginile într-un număr potrivit de coloane:
 
 ```css
 .galerie {
@@ -259,76 +210,52 @@ Galeria foto folosește **CSS Grid**, care aranjează automat imaginile
 }
 ```
 
-Funcția `repeat(auto-fit, minmax(250px, 1fr))` înseamnă: "umple linia
-cu cât mai multe coloane care au cel puțin 250px lățime". Astfel,
-pe un ecran lat vom vedea 4 imagini pe rând, iar pe telefon doar una
-sau două.
+Funcția `repeat(auto-fit, minmax(250px, 1fr))` înseamnă: „umple linia cu
+cât mai multe coloane care au cel puțin 250px lățime". Pe un ecran lat
+vom vedea 4 imagini pe rând, iar pe telefon doar una sau două.
 
-Imaginile au și un efect de mărire la *hover*:
-
-```css
-.galerie img:hover {
-    transform: scale(1.05);
-}
-```
-
-Imaginile folosite sunt preluate de pe **Wikimedia Commons**, sursă
-liberă de imagini cu licență Creative Commons.
+**Design responsive.** Un bloc `@media (max-width: 600px)` se activează
+doar pe ecranele mici (telefoane). Acolo titlul antetului devine mai mic,
+iar link-urile din meniu se așază unul sub altul.
 
 ---
 
-## 6. Mod de utilizare
+## 5. Concluzii
 
-Pentru a rula proiectul nu este nevoie de niciun program special — doar
-de un browser web (Google Chrome, Firefox, Safari, Edge etc.).
-
-Pașii de utilizare:
-
-1. Se deschide folderul `prezentare-roma`.
-2. Se face dublu-click pe fișierul `index.html`.
-3. Pagina se va deschide automat în browserul implicit.
-4. Se folosește meniul de sus pentru a naviga între cele două pagini.
-
-Fiind realizat doar cu HTML și CSS, site-ul **nu necesită conexiune la
-internet**, cu excepția afișării imaginilor (care sunt încărcate de pe
-Wikimedia Commons).
-
----
-
-## 7. Concluzii
-
-Realizarea acestui proiect a fost o experiență utilă din mai multe
-puncte de vedere:
+Realizarea acestui proiect a fost o experiență utilă din mai multe puncte
+de vedere:
 
 - Mi-a permis să aplic în practică cunoștințele de **HTML** și **CSS**
   acumulate în orele de informatică.
-- Am învățat să organizez informația într-un mod clar, atât pentru
-  utilizator (prin secțiuni și meniu), cât și pentru programator
-  (prin separarea HTML-ului de CSS).
-- Am descoperit conceptul de **design responsive**, foarte important
-  în prezent, când majoritatea oamenilor folosesc telefonul pentru
-  a accesa internetul.
-- Am exersat scrierea unui cod **curat și comentat**, care poate fi
-  înțeles ușor și de o altă persoană.
+- Am învățat să separ structura (HTML) de aspect (CSS), folosind un singur
+  fișier de stil pentru ambele pagini.
+- Am descoperit conceptul de **design responsive** și am exersat
+  *media queries*, foarte importante astăzi când majoritatea oamenilor
+  folosesc telefonul pentru a accesa internetul.
+- Am exersat folosirea elementelor **semantice** din HTML5 (`<header>`,
+  `<nav>`, `<main>`, `<section>`, `<footer>`).
+- Tema mi-a permis să aprofundez și un subiect interesant din **psihologie**
+  — experimentul lui Pavlov și implicațiile lui în viața de zi cu zi.
 
 Pe viitor, proiectul ar putea fi îmbunătățit prin:
-- adăugarea unei pagini de **contact** sau **harta** orașului;
-- folosirea **JavaScript** pentru a adăuga interactivitate (de exemplu,
-  un slider de imagini sau un quiz despre Roma);
-- traducerea site-ului și în alte limbi (engleză, italiană).
+- adăugarea unei pagini de **quiz** care să verifice înțelegerea
+  conceptelor (cu JavaScript);
+- integrarea unei **animații** care să arate vizual cele trei etape ale
+  experimentului;
+- traducerea site-ului și în alte limbi (engleză, franceză).
 
 ---
 
-## 8. Bibliografie
+## 6. Bibliografie
 
-1. **Wikipedia** — articolul despre Roma:
-   https://ro.wikipedia.org/wiki/Roma
+1. **Wikipedia** — articolul despre Ivan Pavlov:
+   https://ro.wikipedia.org/wiki/Ivan_Pavlov
 
-2. **Wikipedia** — articolul în limba engleză despre Rome:
-   https://en.wikipedia.org/wiki/Rome
+2. **Wikipedia** — Classical conditioning (engleză):
+   https://en.wikipedia.org/wiki/Classical_conditioning
 
 3. **Wikimedia Commons** — sursa imaginilor folosite:
-   https://commons.wikimedia.org/wiki/Rome
+   https://commons.wikimedia.org/
 
 4. **MDN Web Docs** — documentația oficială pentru HTML și CSS:
    https://developer.mozilla.org/
@@ -337,3 +264,5 @@ Pe viitor, proiectul ar putea fi îmbunătățit prin:
    https://www.w3schools.com/
 
 6. Manualul de Informatică pentru clasa a XII-a.
+
+7. Manualul de Psihologie pentru clasa a X-a.

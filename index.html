@@ -9,16 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Titlul care apare in tab-ul browserului -->
-    <title>Roma - Orașul Etern</title>
+    <title>Experimentul lui Pavlov - Condiționarea clasică</title>
 
     <!-- Includem fisierul de stil partajat de ambele pagini -->
     <link rel="stylesheet" href="stil.css">
 
     <!-- Setam imaginea de fundal pentru antet (specifica acestei pagini) -->
+    <!-- Folosim portretul lui Ivan Pavlov din Wikimedia Commons -->
     <style>
         header {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                              url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1280px-Colosseo_2020.jpg');
+            background-image: linear-gradient(rgba(31, 58, 95, 0.7), rgba(31, 58, 95, 0.7)),
+                              url('https://pymstatic.com/7157/conversions/ivan-pavlov-social.jpg');
         }
     </style>
 </head>
@@ -27,169 +28,215 @@
 
     <!-- ANTETUL: titlul mare al paginii -->
     <header>
-        <h1>Roma</h1>
-        <p>Orașul Etern - capitala Italiei</p>
+        <h1>Experimentul lui Pavlov</h1>
+        <p>Teoria condiționării clasice</p>
     </header>
 
     <!-- MENIU DE NAVIGARE: link-uri catre cele doua pagini -->
     <!-- Clasa "activ" marcheaza pagina curenta -->
     <nav>
         <a href="index.html" class="activ">Acasă</a>
-        <a href="atractii.html">Atracții & Cultură</a>
+        <a href="atractii.html">Aplicații & Curiozități</a>
     </nav>
 
     <!-- CONTINUTUL PRINCIPAL al paginii -->
     <main>
 
-        <!-- Sectiunea 1: Despre Roma (introducere generala) -->
+        <!-- Sectiunea 1: Despre Pavlov si introducerea generala -->
         <section id="despre">
-            <h2>Despre Roma</h2>
+            <h2>Cine a fost Ivan Pavlov?</h2>
             <p>
-                Roma este capitala Italiei și unul dintre cele mai vechi și mai
-                importante orașe din lume. Este situată în centrul peninsulei
-                italice, pe malurile râului Tibru, la aproximativ 25 km de
-                Marea Tireniană.
+                <strong>Ivan Petrovici Pavlov</strong> (1849 - 1936) a fost un
+                fiziolog rus, cunoscut pentru cercetările sale asupra digestiei
+                și, mai ales, pentru descoperirea fenomenului de
+                <em>condiționare clasică</em>.
             </p>
             <p>
-                Orașul are aproximativ <strong>2,7 milioane de locuitori</strong>,
-                iar zona metropolitană numără peste 4,2 milioane de oameni,
-                fiind cea mai mare aglomerație urbană din Italia.
+                În anul <strong>1904</strong> a primit
+                <strong>Premiul Nobel pentru Fiziologie sau Medicină</strong>,
+                pentru studiile sale asupra glandelor digestive. Tot în timpul
+                acestor experimente a observat un fenomen surprinzător care
+                avea să schimbe psihologia modernă.
             </p>
             <p>
-                Roma este supranumită <em>"Orașul Etern"</em> (în italiană
-                <em>"La Città Eterna"</em>) datorită istoriei sale de peste
-                2700 de ani și este de asemenea numită <em>"Capitala lumii"</em>
-                pentru rolul important pe care l-a avut în formarea civilizației
-                occidentale.
-            </p>
-            <p>
-                Centrul istoric al Romei și zona Vaticanului sunt incluse în
-                Patrimoniul Mondial UNESCO din anul 1980.
+                Descoperirile lui Pavlov stau la baza unei mari ramuri din
+                psihologie numită <strong>behaviorism</strong>, care studiază
+                comportamentul observabil al ființelor vii.
             </p>
         </section>
 
-        <!-- Sectiunea 2: Istoria orasului - impartita pe perioade -->
-        <section id="istorie">
-            <h2>Istoria Romei</h2>
+        <!-- Sectiunea 2: Concepte cheie -->
+        <section id="concepte">
+            <h2>Concepte cheie</h2>
 
-            <!-- Perioada 1: Fondarea -->
-            <h3>Fondarea (753 î.Hr.)</h3>
+            <div class="concept">
+                <strong>Stimul necondiționat (SN):</strong> un stimul care
+                produce o reacție în mod natural, fără să fie nevoie de învățare
+                (ex: mâncarea care provoacă salivație).
+            </div>
+
+            <div class="concept">
+                <strong>Răspuns necondiționat (RN):</strong> reacția automată
+                produsă de stimulul necondiționat (ex: salivația când câinele
+                vede mâncare).
+            </div>
+
+            <div class="concept">
+                <strong>Stimul neutru (SNT):</strong> un stimul care, înainte
+                de condiționare, nu produce nicio reacție specifică (ex: sunetul
+                unui clopoțel).
+            </div>
+
+            <div class="concept">
+                <strong>Stimul condiționat (SC):</strong> stimulul care, după
+                ce a fost asociat repetat cu cel necondiționat, ajunge să
+                producă singur reacția (clopoțelul devine SC).
+            </div>
+
+            <div class="concept">
+                <strong>Răspuns condiționat (RC):</strong> reacția învățată,
+                produsă de stimulul condiționat (salivația la auzul
+                clopoțelului, fără mâncare).
+            </div>
+        </section>
+
+        <!-- Sectiunea 3: Experimentul propriu-zis - etape -->
+        <section id="experiment">
+            <h2>Cum a decurs experimentul</h2>
             <p>
-                Conform legendei, Roma a fost fondată la <strong>21 aprilie 753 î.Hr.</strong>
-                de către <strong>Romulus</strong>, primul rege al orașului.
-                Legenda spune că Romulus și fratele său Remus, fii ai zeului
-                Marte, au fost abandonați pe râul Tibru și salvați de o lupoaică
-                care i-a hrănit. Mai târziu, cei doi frați au fondat orașul,
-                dar Romulus l-a ucis pe Remus și a devenit singurul conducător.
+                Pavlov studia digestia la câini, măsurând cantitatea de salivă
+                pe care aceștia o produceau atunci când li se dădea mâncare.
+                A observat însă un lucru ciudat: după un timp, câinii începeau
+                să saliveze chiar și înainte să vadă mâncarea — doar la auzul
+                pașilor asistentului care o aducea.
+            </p>
+            <p>
+                Pentru a studia sistematic acest fenomen, a organizat un
+                experiment în mai multe etape:
             </p>
 
-            <!-- Perioada 2: Republica Romana -->
-            <h3>Republica Romană (509 - 27 î.Hr.)</h3>
-            <p>
-                După alungarea ultimului rege, romanii au înființat o republică
-                condusă de doi consuli aleși anual și de un Senat. În această
-                perioadă, Roma a cucerit treptat întreaga peninsulă italică
-                și apoi s-a extins în Mediterana, învingând Cartagina în
-                celebrele <strong>Războaie Punice</strong>.
-            </p>
+            <div class="etapa">
+                <h4>Etapa 1 — Înainte de condiționare</h4>
+                <p>
+                    Câinele primește <strong>mâncare</strong> (stimul
+                    necondiționat) și salivează (răspuns necondiționat).
+                    Separat, se aude un <strong>clopoțel</strong> (stimul
+                    neutru) — câinele nu are nicio reacție.
+                </p>
+            </div>
 
-            <!-- Perioada 3: Imperiul Roman -->
-            <h3>Imperiul Roman (27 î.Hr. - 476 d.Hr.)</h3>
-            <p>
-                În anul 27 î.Hr., <strong>Octavian Augustus</strong> a devenit
-                primul împărat roman, marcând începutul Imperiului Roman.
-                Imperiul s-a întins de la Britania până în Egipt și de la
-                Spania până în Mesopotamia, fiind unul dintre cele mai mari
-                imperii din istorie.
-            </p>
-            <p>
-                În anul 476 d.Hr., Imperiul Roman de Apus a căzut sub atacurile
-                triburilor germanice, eveniment care marchează sfârșitul
-                Antichității și începutul Evului Mediu.
-            </p>
+            <div class="etapa">
+                <h4>Etapa 2 — În timpul condiționării</h4>
+                <p>
+                    De fiecare dată când câinelui i se aduce mâncarea, se sună
+                    și clopoțelul. Astfel, cei doi stimuli se prezintă
+                    <strong>împreună, în mod repetat</strong>. Câinele
+                    salivează (răspuns necondiționat la mâncare).
+                </p>
+            </div>
 
-            <!-- Perioada 4: Roma papala -->
-            <h3>Roma papală (Evul Mediu - secolul XIX)</h3>
-            <p>
-                După căderea imperiului, Roma a devenit centrul lumii creștine,
-                fiind sediul Papei. În timpul Renașterii, marii artiști precum
-                <strong>Michelangelo</strong>, <strong>Rafael</strong> și
-                <strong>Bernini</strong> au transformat Roma într-un oraș plin
-                de capodopere.
-            </p>
+            <div class="etapa">
+                <h4>Etapa 3 — După condiționare</h4>
+                <p>
+                    Acum, doar sunetul clopoțelului (devenit
+                    <strong>stimul condiționat</strong>) este suficient pentru
+                    ca animalul să saliveze. Câinele a învățat că sunetul
+                    anunță mâncarea — apare un
+                    <strong>răspuns condiționat</strong>.
+                </p>
+            </div>
 
-            <!-- Perioada 5: Roma moderna -->
-            <h3>Roma modernă (din 1871)</h3>
             <p>
-                În anul <strong>1871</strong>, Roma a devenit capitala Italiei
-                unificate, rol pe care îl are și astăzi. În prezent, Roma este
-                un oraș modern care îmbină armonios trecutul antic cu viața
-                contemporană.
+                Pavlov a publicat rezultatele acestor cercetări în lucrarea
+                <em>"Reflexele condiționate"</em> (1927), care a devenit una
+                dintre cărțile fundamentale ale psihologiei moderne.
             </p>
         </section>
 
-        <!-- Sectiunea 3: Geografie si clima -->
-        <section id="geografie">
-            <h2>Geografie și climă</h2>
+        <!-- Sectiunea 4: Procese suplimentare descoperite de Pavlov -->
+        <section id="procese">
+            <h2>Procese descoperite de Pavlov</h2>
+
+            <h3>Achiziția</h3>
             <p>
-                Roma este așezată pe <strong>șapte coline</strong> celebre:
-                Palatin, Aventin, Capitoliu, Quirinal, Viminal, Esquilin și
-                Caelian. Râul Tibru traversează orașul de la nord la sud.
+                Procesul prin care se învață legătura dintre stimulul neutru
+                și cel necondiționat. Cu cât asocierea este mai frecventă, cu
+                atât răspunsul condiționat devine mai puternic.
             </p>
+
+            <h3>Extincția</h3>
             <p>
-                Clima Romei este <strong>mediteraneană</strong>, cu veri calde
-                și uscate, și ierni blânde și ploioase. Temperatura medie în
-                iulie este de aproximativ 25°C, iar în ianuarie de 8°C.
-                Cea mai bună perioadă pentru a vizita orașul este primăvara
-                (aprilie - iunie) sau toamna (septembrie - octombrie), când
-                vremea este plăcută și sunt mai puțini turiști.
+                Dacă, după condiționare, clopoțelul sună de mai multe ori la
+                rând <em>fără</em> a fi urmat de mâncare, răspunsul condiționat
+                slăbește treptat și, în cele din urmă, dispare.
+            </p>
+
+            <h3>Recuperarea spontană</h3>
+            <p>
+                Chiar și după extincție, dacă lăsăm o pauză și sunăm din nou
+                clopoțelul, câinele poate saliva din nou — răspunsul învățat
+                reapare spontan, deși mai slab.
+            </p>
+
+            <h3>Generalizarea</h3>
+            <p>
+                Câinele salivează nu doar la sunetul clopoțelului folosit în
+                experiment, ci și la sunete asemănătoare (un alt clopoțel sau
+                un fluier). Stimuli similari produc același răspuns.
+            </p>
+
+            <h3>Discriminarea</h3>
+            <p>
+                Dacă numai un anumit sunet este urmat de mâncare, iar altele
+                nu, câinele învață să răspundă <em>doar</em> la cel "corect"
+                și ignoră restul. Este opusul generalizării.
             </p>
         </section>
 
-        <!-- Sectiunea 4: Tabel cu informatii rapide -->
+        <!-- Sectiunea 5: Tabel cu informatii rapide despre Pavlov -->
         <section id="informatii">
             <h2>Informații rapide</h2>
             <table>
                 <!-- Fiecare rand este o pereche eticheta-valoare -->
                 <tr>
-                    <td>Țara</td>
-                    <td>Italia</td>
+                    <td>Nume complet</td>
+                    <td>Ivan Petrovici Pavlov</td>
                 </tr>
                 <tr>
-                    <td>Regiune</td>
-                    <td>Lazio</td>
+                    <td>Născut</td>
+                    <td>26 septembrie 1849, Riazan (Rusia)</td>
                 </tr>
                 <tr>
-                    <td>Populație</td>
-                    <td>2,7 milioane (oraș)</td>
+                    <td>Decedat</td>
+                    <td>27 februarie 1936, Leningrad</td>
                 </tr>
                 <tr>
-                    <td>Suprafață</td>
-                    <td>1.287 km²</td>
+                    <td>Naționalitate</td>
+                    <td>Rus</td>
                 </tr>
                 <tr>
-                    <td>Limba oficială</td>
-                    <td>Italiană</td>
+                    <td>Domeniu</td>
+                    <td>Fiziologie, psihologie</td>
                 </tr>
                 <tr>
-                    <td>Monedă</td>
-                    <td>Euro (€)</td>
+                    <td>Premiul Nobel</td>
+                    <td>1904 (Fiziologie sau Medicină)</td>
                 </tr>
                 <tr>
-                    <td>Fus orar</td>
-                    <td>UTC+1 (vara UTC+2)</td>
+                    <td>Lucrare celebră</td>
+                    <td>Reflexele condiționate (1927)</td>
                 </tr>
                 <tr>
-                    <td>Râul principal</td>
-                    <td>Tibru</td>
+                    <td>Animale folosite</td>
+                    <td>Câini</td>
                 </tr>
                 <tr>
-                    <td>Anul fondării</td>
-                    <td>753 î.Hr.</td>
+                    <td>Concept cheie</td>
+                    <td>Condiționare clasică</td>
                 </tr>
                 <tr>
-                    <td>UNESCO</td>
-                    <td>Patrimoniu Mondial din 1980</td>
+                    <td>Curent fondat</td>
+                    <td>Behaviorism (împreună cu Watson)</td>
                 </tr>
             </table>
         </section>
@@ -198,7 +245,7 @@
 
     <!-- SUBSOLUL paginii -->
     <footer>
-        <p>Proiect școlar - Prezentare Roma</p>
+        <p>Proiect școlar — Experimentul lui Pavlov</p>
         <p>Surse: Wikipedia, Wikimedia Commons</p>
     </footer>
 

@@ -27,7 +27,27 @@
       "Bash(brew install *)",
       "Bash(pdftoppm -r 80 -f 1 -l 2 documentatie.pdf /tmp/check)",
       "Bash(pdftoppm -r 80 -png -f 1 -l 2 documentatie.pdf /tmp/check)",
-      "Bash(pdftoppm -r 70 -png -f 5 -l 5 documentatie.pdf /tmp/check5)"
+      "Bash(pdftoppm -r 70 -png -f 5 -l 5 documentatie.pdf /tmp/check5)",
+      "Bash(ls /Applications/ | grep -iE \"chrome|chromium|firefox|edge|brave|safari\" 2>/dev/null; which chromium 2>/dev/null; which google-chrome 2>/dev/null; which npx 2>/dev/null; which node 2>/dev/null)",
+      "Read(//Applications/**)",
+      "Bash(sips -g pixelHeight -g pixelWidth capturi/index_full.png capturi/atractii_full.png)",
+      "Bash(cat)",
+      "Bash(which magick *)",
+      "Bash(which gs *)",
+      "Bash(ls /tmp/node_modules/puppeteer-core/package.json 2>/dev/null && echo \"OK\" || echo \"NEED_INSTALL\")",
+      "Read(//private/tmp/node_modules/puppeteer-core/**)",
+      "Bash(python3 /tmp/build_doc.py)",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL OK'\\)\")",
+      "Bash(python3 /tmp/split_capture.py \"/Users/lazarcatalin/Desktop/Projects/Personal/untitled folder/prezentare-roma\")",
+      "Bash(python3 -c ' *)",
+      "Bash(pdfinfo documentatie.pdf)",
+      "Bash(rm -f documentatie.docx)",
+      "Bash(soffice --headless --convert-to docx --outdir . documentatie.html)",
+      "Bash(soffice --headless --convert-to \"docx:MS Word 2007 XML\" --outdir . documentatie.html)",
+      "Bash(unzip -l documentatie.docx)",
+      "Bash(python3 /tmp/embed_images.py)",
+      "Bash(python3 -)",
+      "Bash(soffice --headless --convert-to \"docx:MS Word 2007 XML\" --outdir . documentatie_inline.html)"
     ]
   }
 }
